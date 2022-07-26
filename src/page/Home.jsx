@@ -10,16 +10,15 @@ import { BiRightArrowAlt } from "react-icons/bi";
 
 export const Home = () => {
   useEffect(() => {
-    document.title = "Home";
+    document.title = "Home - BNMO";
   }, []);
-  
+
   return (
     <PageLayout>
       <Flex
         flexDirection="row"
         justifyContent="space-evenly"
         alignItems="center"
-        bg="darkCyan"
         borderRadius="lg"
         flexWrap="wrap"
         py={{ base: "6", lg: "0" }}
@@ -28,10 +27,10 @@ export const Home = () => {
           flexDirection="column"
           gap={2}
         >
-          <Text as="b" fontSize="2xl" color="white">
+          <Text as="b" fontSize="2xl" color="darkCyan">
             Pentransferan Uang dengan<br />BNMO
           </Text>
-          <Button>Cek Profile&nbsp;<BiRightArrowAlt /></Button>
+          <Button bg="blue" color="white">Cek Profile&nbsp;<BiRightArrowAlt /></Button>
         </Flex>
         <Image src={require("../image/logo.png")} alt="logo" objectFit="inherit" />
       </Flex>

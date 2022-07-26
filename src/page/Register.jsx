@@ -20,7 +20,7 @@ export const Register = () => {
   });
 
   useEffect(() => {
-    document.title = "Register";
+    document.title = "Register - BNMO";
   }, []);
 
   return (

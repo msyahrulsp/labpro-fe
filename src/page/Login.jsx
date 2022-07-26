@@ -17,7 +17,7 @@ export const Login = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    document.title = "Login";
+    document.title = "Login - BNMO";
   }, []);
 
   return (
