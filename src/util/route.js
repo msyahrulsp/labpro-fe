@@ -14,5 +14,33 @@ export const routes = [
   {
     path: '/register',
     component: Register,
-  }
+  },
+  {
+    path: '/request',
+    component: Home,
+  },
+  {
+    path: '/transfer',
+    component: Home,
+  },
+  {
+    path: '/history',
+    component: Home,
+  },
+  {
+    path: '/verifikasi',
+    component: Home,
+  },
+  {
+    path: '/verifikasi/akun',
+    component: Home,
+  },
+  {
+    path: '/verifikasi/transfer',
+    component: Home,
+  },
+  {
+    path: '/search',
+    component: Home,
+  },
 ]

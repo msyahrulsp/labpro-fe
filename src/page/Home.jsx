@@ -21,6 +21,7 @@ export const Home = () => {
         alignItems="center"
         borderRadius="lg"
         flexWrap="wrap"
+        mt={10}
         py={{ base: "6", lg: "0" }}
       >
         <Flex

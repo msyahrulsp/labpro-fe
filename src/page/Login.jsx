@@ -79,7 +79,7 @@ export const Login = () => {
             color="white"
             borderRadius="lg"
             mt={2}
-            onClick={() => console.log("Handle Login")}
+            onClick={() => console.log(window.location.pathname)}
           >
             Login
           </Button>
