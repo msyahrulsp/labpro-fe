@@ -2,6 +2,7 @@ import { Home } from "../page/Home";
 import { Login } from "../page/Login";
 import { Register } from "../page/Register";
 import { Request } from "../page/Request";
+import { Transfer } from "../page/Transfer";
 
 export const routes = [
   {
@@ -22,7 +23,7 @@ export const routes = [
   },
   {
     path: '/transfer',
-    component: Home,
+    component: Transfer,
   },
   {
     path: '/history',
