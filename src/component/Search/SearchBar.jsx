@@ -26,10 +26,10 @@ export const SearchBar = ({ onChange, value, handleTrue, handleFalse, trueVal, f
         </MenuButton>
         <MenuList>
           <MenuItem>
-            <Checkbox colorScheme="green" isChecked={trueVal} onChange={handleTrue}>{options[0]}</Checkbox>
+            <Checkbox colorScheme="linkedin" isChecked={trueVal} onChange={handleTrue}>{options[0]}</Checkbox>
           </MenuItem>
           <MenuItem>
-            <Checkbox colorScheme="green" isChecked={falseVal} onChange={handleFalse}>{options[1]}</Checkbox>
+            <Checkbox colorScheme="linkedin" isChecked={falseVal} onChange={handleFalse}>{options[1]}</Checkbox>
           </MenuItem>
         </MenuList>
       </Menu>
