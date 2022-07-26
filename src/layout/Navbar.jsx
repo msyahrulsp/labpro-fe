@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Flex, Box, Avatar } from '@chakra-ui/react';
+import { Flex, Box, Text } from '@chakra-ui/react';
 import { AiOutlineHome, AiOutlineDatabase } from 'react-icons/ai';
 
 export const Navbar = () => {
@@ -17,10 +17,7 @@ export const Navbar = () => {
       borderBottomRadius="lg"
     >
       <Link to="/">
-        <Avatar
-          size="sm"
-          name="User Name"
-        />
+        <Text as="b" opacity="0.8">BNMO</Text>
       </Link>
       <Box
         display="flex"

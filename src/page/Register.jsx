@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Flex,
   Text,
@@ -18,6 +18,11 @@ export const Register = () => {
     password: false,
     confirmPassword: false
   });
+
+  useEffect(() => {
+    document.title = "Register";
+  }, []);
+
   return (
     <PageAnimate>
       <Flex

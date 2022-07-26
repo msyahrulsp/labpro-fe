@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Flex,
   Text,
@@ -15,6 +15,11 @@ import { PageAnimate } from "../layout/PageLayout";
 
 export const Login = () => {
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
+
   return (
     <PageAnimate>
       <Flex
