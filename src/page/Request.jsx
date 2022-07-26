@@ -11,12 +11,17 @@ import {
   Button,
   Select
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PageLayout } from '../layout/PageLayout';
 import { currencyList } from '../util/currency';
 
 export const Request = () => {
   const [stat, setStat] = useState("inc");
+  
+  useEffect(() => {
+    document.title = "Request - BNMO";
+  }, []);
+
   return (
     <PageLayout>
       <Container maxW={{ base: "85%", lg: "70ch" }}>
@@ -36,8 +41,8 @@ export const Request = () => {
             <FormLabel>Tipe Request</FormLabel>
             <RadioGroup value={stat} onChange={setStat}>
               <Stack direction={{ base: "column", sm: "row"}}>
-                <Radio colorScheme="green" value="inc">Penambahan</Radio>
-                <Radio colorScheme="green" value="dec">Pengurangan</Radio>
+                <Radio colorScheme="linkedin" value="inc">Penambahan</Radio>
+                <Radio colorScheme="linkedin" value="dec">Pengurangan</Radio>
               </Stack>
             </RadioGroup>
           </FormControl>

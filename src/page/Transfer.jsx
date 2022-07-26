@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Container,
   Flex,
@@ -12,6 +13,10 @@ import { PageLayout } from '../layout/PageLayout';
 import { currencyList } from '../util/currency';
 
 export const Transfer = () => {
+  useEffect(() => {
+    document.title = "Transfer - BNMO";
+  }, []);
+  
   return (
     <PageLayout>
       <Container maxW={{ base: "85%", lg: "70ch" }}>
@@ -33,10 +38,10 @@ export const Transfer = () => {
           </FormControl>
           <FormControl isRequired mt={3}>
             <FormLabel>Currency</FormLabel>
-            <Select value="IDR">
+            <Select defaultValue="IDR">
               {currencyList.map((item) => {
                 return (
-                  <option key={item.id} value={item}>{item}</option>
+                  <option key={item} value={item}>{item}</option>
                 )
               })}
             </Select>
