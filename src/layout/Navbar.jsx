@@ -34,6 +34,9 @@ export const Navbar = () => {
       alignItems="center"
       flexWrap="wrap"
       borderBottomRadius="lg"
+      position="sticky"
+      top="0"
+      zIndex="100"
     >
       <Link to="/">
         <Text as="b" color="darkCyan" opacity="0.8" fontSize="xl">BNMO</Text>

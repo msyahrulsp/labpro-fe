@@ -22,11 +22,7 @@ export const PageAnimate = ({ children }) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={
-        {
-          duration: 0.3,
-        }
-      }
+      transition={{ delay: 0.3 }}
     >
       {children}
     </motion.div>
@@ -42,11 +38,7 @@ export const PageLayout = ({ children }) => {
         initial="initial"
         animate="animate"
         exit="exit"
-        transition={
-          {
-            duration: 0.3,
-          }
-        }
+        transition={{ delay: 0.3 }}
       >
         <Box
           px={10}
