@@ -6,7 +6,6 @@ import {
   Button,
   Show
 } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
 import { LinkMenu } from '../component/Navbar/LinkMenu';
 import { LinkMenuMobile } from '../component/Navbar/LinkMenuMobile';
 
@@ -26,7 +25,7 @@ export const Navbar = () => {
   return (
     <Flex
       w="100%"
-      px={5}
+      px={10}
       py={2}
       bg="#FFFFFF"
       boxShadow= "4px 5px 5px -2px lightgray"
@@ -49,7 +48,9 @@ export const Navbar = () => {
         <Show above="lg">
           {/* TODO benerin role */}
           {link["customer"].map((item) => {
-            const match = matchPath({ path: item.to }, window.location.pathname);
+            const loc = window.location.pathname.includes("/verifikasi") ?
+              "/verifikasi" : window.location.pathname;
+            const match = matchPath({ path: item.to }, loc);
             return (
               <Link to={item.to}>
                 <Button

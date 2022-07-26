@@ -49,7 +49,7 @@ export const PageLayout = ({ children }) => {
         }
       >
         <Box
-          px={5}
+          px={10}
           pt={4}
           pb={7}
         >

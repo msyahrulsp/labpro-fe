@@ -29,7 +29,7 @@ export const Home = () => {
           gap={2}
         >
           <Text as="b" fontSize="2xl" color="darkCyan">
-            Pentransferan Uang dengan<br />BNMO
+            Memainkan Uang dengan<br />BNMO
           </Text>
           <Button bg="blue" color="white">Cek Profile&nbsp;<BiRightArrowAlt /></Button>
         </Flex>

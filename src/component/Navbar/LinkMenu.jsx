@@ -15,7 +15,7 @@ export const LinkMenu = () => {
       <MenuButton bg="darkCyan" as={Button}>
         <Flex alignItems="center" gap={2}>
           <Avatar name="Pie KABARE" size="sm" />
-          <Text color="white">Profile</Text>
+          <Text color="white">Role</Text>
         </Flex>
       </MenuButton>
       <MenuList>

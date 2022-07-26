@@ -1,16 +1,13 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
 import {
-  Button,
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
-  Avatar,
-  Text,
-  Flex
+  MenuItem
 } from '@chakra-ui/react';
 
 export const LinkMenuMobile = () => {
+  // TODO masih belum implement per role
   return (
     <Menu>
       <MenuButton>
