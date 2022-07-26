@@ -52,7 +52,7 @@ export const Navbar = () => {
               "/verifikasi" : window.location.pathname;
             const match = matchPath({ path: item.to }, loc);
             return (
-              <Link to={item.to}>
+              <Link to={item.to} key={item.label}>
                 <Button
                   key={item.label}
                   color={match ? "white" : "blue"}

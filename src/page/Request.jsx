@@ -11,10 +11,12 @@ import {
   Button,
   Select
 } from '@chakra-ui/react';
+import { useState } from 'react';
 import { PageLayout } from '../layout/PageLayout';
 import { currencyList } from '../util/currency';
 
 export const Request = () => {
+  const [stat, setStat] = useState("inc");
   return (
     <PageLayout>
       <Container maxW={{ base: "85%", lg: "70ch" }}>
@@ -32,19 +34,19 @@ export const Request = () => {
           <Text as="b" textAlign="center" mb={4}>Request Saldo</Text>
           <FormControl isRequired>
             <FormLabel>Tipe Request</FormLabel>
-            <RadioGroup>
-                <Stack direction={{ base: "column", sm: "row"}}>
-                  <Radio value='1'>Penambahan</Radio>
-                  <Radio value='0'>Pengurangan</Radio>
-                </Stack>
-              </RadioGroup>
+            <RadioGroup value={stat} onChange={setStat}>
+              <Stack direction={{ base: "column", sm: "row"}}>
+                <Radio colorScheme="green" value="inc">Penambahan</Radio>
+                <Radio colorScheme="green" value="dec">Pengurangan</Radio>
+              </Stack>
+            </RadioGroup>
           </FormControl>
           <FormControl isRequired mt={3}>
             <FormLabel>Currency</FormLabel>
-            <Select value="IDR">
+            <Select defaultValue="IDR">
               {currencyList.map((item) => {
                 return (
-                  <option key={item.id} value={item}>{item}</option>
+                  <option key={item} value={item}>{item}</option>
                 )
               })}
             </Select>
