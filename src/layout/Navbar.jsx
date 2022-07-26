@@ -4,13 +4,13 @@ import {
   Box,
   Text,
   Button,
-  Avatar,
   Show
 } from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
 import { LinkMenu } from '../component/Navbar/LinkMenu';
+import { LinkMenuMobile } from '../component/Navbar/LinkMenuMobile';
 
 export const Navbar = () => {
-  const user = "PIE";
   const link = {
     customer: [
       { label: "Request", to: "/request" },
@@ -37,7 +37,7 @@ export const Navbar = () => {
       borderBottomRadius="lg"
     >
       <Link to="/">
-        <Text as="b" color="darkCyan" opacity="0.8" fontSize={{ base: "xs", lg: "md" }}>BNMO</Text>
+        <Text as="b" color="darkCyan" opacity="0.8" fontSize="xl">BNMO</Text>
       </Link>
       <Box
         display="flex"
@@ -47,13 +47,13 @@ export const Navbar = () => {
         flexDirection="row"
       >
         <Show above="lg">
+          {/* TODO benerin role */}
           {link["customer"].map((item) => {
             const match = matchPath({ path: item.to }, window.location.pathname);
             return (
               <Link to={item.to}>
                 <Button
                   key={item.label}
-                  fontSize={{ base: "xs", lg: "md" }}
                   color={match ? "white" : "blue"}
                   borderRadius="lg"
                   bg={match ? "blue" : "white"}
@@ -67,7 +67,7 @@ export const Navbar = () => {
           <LinkMenu />
         </Show>
         <Show below="lg">
-          
+          <LinkMenuMobile />
         </Show>
       </Box>
     </Flex>
