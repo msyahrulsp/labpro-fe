@@ -1,6 +1,7 @@
 import { Home } from "../page/Home";
 import { Login } from "../page/Login";
 import { Register } from "../page/Register";
+import { Request } from "../page/Request";
 
 export const routes = [
   {
@@ -17,7 +18,7 @@ export const routes = [
   },
   {
     path: '/request',
-    component: Home,
+    component: Request,
   },
   {
     path: '/transfer',

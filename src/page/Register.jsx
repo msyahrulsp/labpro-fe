@@ -33,6 +33,7 @@ export const Register = () => {
       >
         <Flex
           bg="#FFFFFF"
+          boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
           py={5}
           px={7}
           borderRadius="lg"

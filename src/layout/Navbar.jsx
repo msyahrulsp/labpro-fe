@@ -28,7 +28,7 @@ export const Navbar = () => {
       px={10}
       py={2}
       bg="#FFFFFF"
-      boxShadow= "4px 5px 5px -2px lightgray"
+      boxShadow= "3px 4px 4px lightgray, inset 5px 5px 4px lightgray"
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"

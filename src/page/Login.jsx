@@ -34,6 +34,7 @@ export const Login = () => {
           px={7}
           borderRadius="lg"
           flexDirection="column"
+          boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
           gap={3}
         >
           <FormControl>

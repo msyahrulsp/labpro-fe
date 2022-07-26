@@ -12,7 +12,7 @@ export const SearchBar = ({ onChange, value }) => {
         placeholder="Keyword"
         onChange={onChange}
         type="search"
-        boxShadow= "4px 5px 5px -2px lightgray"
+        boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
       />
     </Stack>
   )

@@ -11,7 +11,7 @@ const colors = {
   cyan,
   darkCyan,
   purple,
-  blue
+  blue,
 }
 
 const theme = extendTheme({
