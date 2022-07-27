@@ -2,6 +2,7 @@ import { Container } from '@chakra-ui/react';
 import { SearchBar } from '../component/Search/SearchBar';
 import { PageLayout } from '../layout/PageLayout';
 import { useState, useEffect } from 'react';
+import { HistoryCard } from '../component/Card/HistoryCard';
 
 export const History = () => {
   const [searchVal, setSearchVal] = useState('');
@@ -37,7 +38,8 @@ export const History = () => {
           falseVal={filter[1]}
           options={['Transfer Saldo', 'Request Saldo']}
         />
-        {/* TODO card buat transfer ataupun request */}
+        <HistoryCard tipe="request" tipeRequest="Pengiriman" />
+        <HistoryCard tipe="transfer" rekeningTujuan="12345678" status="Pending" />
       </Container>
     </PageLayout>
   )
