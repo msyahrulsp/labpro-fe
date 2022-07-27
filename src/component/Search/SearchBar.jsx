@@ -11,7 +11,7 @@ import {
 
 export const SearchBar = ({ onChange, value, handleTrue, handleFalse, trueVal, falseVal, options }) => {
   return (
-    <Stack direction="row" gap="2">
+    <Stack direction="row" gap="2" mb={8}>
       <Input
         bg="white"
         value={value}

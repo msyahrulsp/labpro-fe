@@ -5,7 +5,7 @@ import {
 
 export const SearchBar = ({ onChange, value }) => {
   return (
-    <Stack direction="row" gap="2">
+    <Stack direction="row" gap="2" mb={8}>
       <Input
         bg="white"
         value={value}
