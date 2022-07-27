@@ -36,7 +36,6 @@ export const Profile = () => {
           borderRadius="lg"
           boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
         >
-          <Text as="b" textAlign="center" mb={4}>Profile</Text>
           <Avatar mb={4} src={require("../image/logo.png")} bg="inherit" size="lg" name="M Syahrul SP" />
           {dummyData.map((item, idx) => {
             return (
