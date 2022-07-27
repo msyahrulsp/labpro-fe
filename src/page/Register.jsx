@@ -41,15 +41,15 @@ export const Register = () => {
           gap={3}
           minW="30vw"
         >
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel>Nama</FormLabel>
             <Input size="sm" variant="flushed" type="text" placeholder="Masukkan Nama" />
           </FormControl>
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel>Username</FormLabel>
             <Input size="sm" variant="flushed" type="text" placeholder="Masukkan Username" />
           </FormControl>
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel>Password</FormLabel>
             <InputGroup>
               <Input
@@ -67,7 +67,7 @@ export const Register = () => {
               />
             </InputGroup>
           </FormControl>
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel>Konfirmasi Password</FormLabel>
             <InputGroup>
               <Input
@@ -85,7 +85,7 @@ export const Register = () => {
               />
             </InputGroup>
           </FormControl>
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel>Upload KTP</FormLabel>
             <Input size="sm" variant="flushed" type="file" />
           </FormControl>
