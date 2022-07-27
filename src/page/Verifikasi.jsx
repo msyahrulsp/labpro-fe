@@ -2,6 +2,8 @@ import { Container } from '@chakra-ui/react';
 import { SearchBar } from '../component/Search/SearchBar';
 import { PageLayout } from '../layout/PageLayout';
 import { useState, useEffect } from 'react';
+import { VerifikasiAkunCard } from '../component/Card/VerifikasiAkunCard';
+import { VerifikasiRequestCard } from '../component/Card/VerifikasiRequestCard';
 
 export const Verifikasi = () => {
   const [searchVal, setSearchVal] = useState('');
@@ -37,7 +39,8 @@ export const Verifikasi = () => {
           falseVal={filter[1]}
           options={['Verifikasi Akun', 'Request Saldo']}
         />
-        {/* TODO card buat transfer ataupun request */}
+        <VerifikasiAkunCard />
+        <VerifikasiRequestCard />
       </Container>
     </PageLayout>
   )
