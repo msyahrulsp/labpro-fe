@@ -4,7 +4,7 @@ export const HistoryCard = (props) => {
   return (
     <Container
       display="flex"
-      direction="row"
+      flexDirection={{ base:"column", sm: "row" }}
       gap={5}
       bg="#FFFFFF"
       borderRadius="lg"
@@ -15,8 +15,15 @@ export const HistoryCard = (props) => {
       mt={4}
       maxW="70ch"
     >
-      <Text textAlign="center" w="5ch" as="b" color="darkCyan">{props.tipe.toUpperCase()}</Text>
-      <Flex direction="column" w="100%" gap={2}>
+      <Text
+        textAlign="center"
+        w={{ base: "fit-content", sm: "5ch" }}
+        as="b"
+        color="darkCyan"
+      >
+        {props.tipe.toUpperCase()}
+      </Text>
+      <Flex direction="column" w="100%" gap={{ base: 0, sm: 2 }}>
         <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
           <Flex direction="column">
             <Text as="b" color="blue">
