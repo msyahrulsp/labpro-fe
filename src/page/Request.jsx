@@ -36,7 +36,6 @@ export const Request = () => {
           borderRadius="lg"
           boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
         >
-          <Text as="b" textAlign="center" mb={4}>Request Saldo</Text>
           <FormControl isRequired>
             <FormLabel>Tipe Request</FormLabel>
             <RadioGroup value={stat} onChange={setStat}>
@@ -61,12 +60,12 @@ export const Request = () => {
             <Input variant="flushed" type="number" pattern="[0-9]*" placeholder="Nominal" min="0" />
           </FormControl>
           <Button
-            mt={3}
+            mt={5}
             color="white"
             bg="darkCyan"
-            alignSelf="flex-end"
+            w="100%"
           >
-            Submit
+            Request
           </Button>
         </Flex>
       </Container>
