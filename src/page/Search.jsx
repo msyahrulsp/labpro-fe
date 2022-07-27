@@ -2,6 +2,7 @@ import { Container } from '@chakra-ui/react';
 import { SearchBar } from '../component/Search/SearchBarNoFilter';
 import { PageLayout } from '../layout/PageLayout';
 import { useState, useEffect } from 'react';
+import { AkunCard } from '../component/Card/AkunCard';
 
 export const Search = () => {
   const [searchVal, setSearchVal] = useState('');
@@ -32,7 +33,7 @@ export const Search = () => {
           onChange={handleChange}
           value={searchVal}
         />
-        {/* TODO card buat transfer ataupun request */}
+        <AkunCard />
       </Container>
     </PageLayout>
   )
