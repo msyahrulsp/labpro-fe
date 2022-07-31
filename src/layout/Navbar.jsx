@@ -70,7 +70,7 @@ export const Navbar = () => {
                     {item.label}
                   </Button>
                 </Link>
-              ) && <LinkMenu />
+              )
             })
           ) : (
             <Button
@@ -85,6 +85,7 @@ export const Navbar = () => {
               Login
             </Button>
           )}
+          {role !== 'default' && <LinkMenu />}
         </Show>
         <Show below="lg">
           <LinkMenuMobile />

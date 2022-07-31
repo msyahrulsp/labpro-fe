@@ -21,8 +21,8 @@ export const LinkMenu = () => {
     <Menu>
       <MenuButton bg="darkCyan" as={Button} borderRadius="full">
         <Flex alignItems="center" gap={2}>
-          <Avatar name={user.name} size="sm" />
-          <Text color="white">{user.role}</Text>
+          <Avatar name={user.nama} size="sm" />
+          <Text color="white" textTransform="capitalize">{user.role}</Text>
         </Flex>
       </MenuButton>
       <MenuList>
