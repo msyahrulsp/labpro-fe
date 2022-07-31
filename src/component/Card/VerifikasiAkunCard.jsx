@@ -1,6 +1,10 @@
 import { Flex, Text, Container, Button, Image } from '@chakra-ui/react';
+import { parseDate } from '../../util/date';
 
 export const VerifikasiAkunCard = (props) => {
+  const temp = parseDate(props.created).split('-');
+  const tgl = temp[0];
+  const waktu = temp[1] + ' WIB';
   return (
     <Flex
       direction="column"
@@ -31,19 +35,23 @@ export const VerifikasiAkunCard = (props) => {
         <Flex direction="column" w="100%" gap={2}>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">Nama Akun</Text>
-            <Text opacity="0.85">M Syahrul Surya Putra</Text>
+            <Text opacity="0.85">{props.nama}</Text>
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">Username</Text>
-            <Text opacity="0.85">msyahrulsp</Text>
+            <Text opacity="0.85">{props.next_nama}</Text>
+          </Flex>
+          <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
+            <Text as="b" color="blue">No Rekening</Text>
+            <Text opacity="0.85">{props.util2}</Text>
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">Tanggal</Text>
-            <Text opacity="0.85">22/07/2022</Text>
+            <Text opacity="0.85">{tgl}</Text>
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">Waktu</Text>
-            <Text opacity="0.85">20:04 WIB</Text>
+            <Text opacity="0.85">{waktu}</Text>
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue" alignSelf="center">KTP</Text>

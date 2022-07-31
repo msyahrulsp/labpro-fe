@@ -23,7 +23,7 @@ export const Search = () => {
     totalItem: data.length,
     page,
     items: data,
-    itemsPerPage: 1
+    itemsPerPage: 5
   });
 
   const searchData = (searchVal) => {
@@ -51,7 +51,6 @@ export const Search = () => {
   useEffect(() => {
     document.title = "Search - BNMO";
     const fetchData = async () => {
-      console.log(auth);
       try {
         const { data } = await getDataAPI("/users", {
           authorization: auth.getToken()
@@ -106,7 +105,6 @@ export const Search = () => {
       ) : (
         <Loading />
       )}
-      
     </PageLayout>
   )
 }
