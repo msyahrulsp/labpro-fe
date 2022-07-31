@@ -56,7 +56,7 @@ export const Login = () => {
     if (auth.user !== null) {
       navigate("/");
       toast({
-        title: "Auth",
+        title: "Warning",
         description: "Kamu sudah login",
         status: "warning",
         position: "top",

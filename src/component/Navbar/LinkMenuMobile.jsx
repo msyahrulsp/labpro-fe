@@ -43,7 +43,7 @@ export const LinkMenuMobile = () => {
               if (item.label === "Logout") {
                 auth.logout();
                 toast({
-                  title: "Auth",
+                  title: "Success",
                   description: "Kamu berhasil logout",
                   status: "success",
                   position: "top",

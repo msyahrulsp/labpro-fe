@@ -1,10 +1,23 @@
 import { Flex, Text, Container } from '@chakra-ui/react';
+import { parseDate } from '../../util/date';
+
+const colors = {
+  pending: 'orange',
+  accepted: 'green',
+  rejected: 'redLight'
+}
 
 export const HistoryCard = (props) => {
+  const temp = parseDate(props.created_at).split('-');
+  const tgl = temp[0];
+  const waktu = temp[1] + ' WIB';
   return (
     <Container
       display="flex"
-      flexDirection={{ base:"column", sm: "row" }}
+      flexDirection={{ 
+        base:"column", 
+        sm: props.tipe_transaksi === 'request' ? 'row' : 'row-reverse' 
+      }}
       gap={5}
       bg="#FFFFFF"
       borderRadius="lg"
@@ -21,37 +34,49 @@ export const HistoryCard = (props) => {
         as="b"
         color="darkCyan"
       >
-        {props.tipe.toUpperCase()}
+        {props.tipe_transaksi.toUpperCase()}
       </Text>
       <Flex direction="column" w="100%" gap={{ base: 0, sm: 2 }}>
         <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
           <Flex direction="column">
             <Text as="b" color="blue">
-              {props.tipe === 'request' ? 'Tipe Request' : 'Rekening Tujuan'}
+              {props.tipe_transaksi === 'request' ? 'Tipe Request' : 'Rekening Tujuan'}
             </Text>
-            <Text opacity="0.85">
-              {props.tipe === 'request' ? props.tipeRequest : props.rekeningTujuan}
+            <Text opacity="0.85" textTransform="capitalize">
+              {props.tipe_util}
             </Text>
           </Flex>
           <Flex direction="column">
             <Text as="b" color="blue" textAlign={{ base: "left", sm: "right"}}>Nominal</Text>
-            <Text opacity="0.85">Rp. 123456789</Text>
+            <Text opacity="0.85">
+              {new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: props.currency,
+              }).format(props.nominal)}
+            </Text>
           </Flex>
         </Flex>
         <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
           <Flex direction="column">
             <Text as="b" color="blue">Tanggal</Text>
-            <Text opacity="0.85">22/07/2022</Text>
+            <Text opacity="0.85">{tgl}</Text>
           </Flex>
           <Flex direction="column">
             <Text as="b" color="blue" textAlign={{ base: "left", sm: "right"}}>Waktu</Text>
-            <Text opacity="0.85">13:15 WIB</Text>
+            <Text opacity="0.85">{waktu}</Text>
           </Flex>
         </Flex>
-        {props.status ? (
+        {props.status !== 'success' ? (
           <Flex direction="column">
             <Text as="b" color="blue">Status</Text>
-            <Text opacity="0.85">{props.status}</Text>
+            <Text
+              as="b"
+              opacity="0.85"
+              color={colors[props.status]}
+              textTransform="capitalize"
+            >
+              {props.status}
+            </Text>
           </Flex>
         ) : null}
       </Flex>

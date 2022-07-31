@@ -47,6 +47,16 @@ export const AkunCard = (props) => {
               }).format(props.saldo)}
             </Text>
           </Flex>
+          <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
+            <Text as="b" color="blue">Status Akun</Text>
+            <Text
+              as="b"
+              opacity="0.85"
+              color={props.status_akun ? "green" : "redLight"}  
+            >
+              {props.status_akun ? "Verified" : "Not Verified"}
+            </Text>
+          </Flex>
         </Flex>
       </Container>
     </Flex>

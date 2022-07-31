@@ -168,11 +168,7 @@ export const Verifikasi = () => {
           />
         </Container>
       ) : (
-        isLoading ? <Loading /> : (
-          <Center>
-            Empty Data
-          </Center>
-        )
+        <Loading />
       )}
     </PageLayout>
   )

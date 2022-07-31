@@ -35,7 +35,7 @@ export const LinkMenu = () => {
           auth.logout();
           navigate("/");
           toast({
-            title: "Auth",
+            title: "Success",
             description: "Kamu berhasil logout",
             status: "success",
             position: "top",
