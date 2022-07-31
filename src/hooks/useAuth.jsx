@@ -1,11 +1,13 @@
 import { useToast } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { getDataAPI, postDataAPI } from "../util/api";
 
 export const useAuth = () => {
   const { user, setUser, listRek, setListRek } = useContext(UserContext);
   const toast = useToast();
+  const navigate = useNavigate();
 
   const getToken = () => {
     const token = localStorage.getItem('token') ?? null;
@@ -57,7 +59,8 @@ export const useAuth = () => {
         position: "top",
         isClosable: true
       })
-      return data;
+      
+      navigate("/");
     } catch (err) {
       toast({
         title: "Error",

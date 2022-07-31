@@ -36,7 +36,6 @@ export const Login = () => {
   const handleLogin = async () => {
     try {
       await auth.login(log)
-      navigate("/");
     } catch (err) {
       toast({
         title: "Error",
@@ -44,7 +43,11 @@ export const Login = () => {
         status: "error",
         position: "top",
         isClosable: true
-      })
+      });
+      setLog({
+        username: "",
+        password: ""
+      });
     }
   }
 
