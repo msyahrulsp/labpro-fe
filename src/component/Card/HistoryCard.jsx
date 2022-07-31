@@ -2,7 +2,7 @@ import { Flex, Text, Container } from '@chakra-ui/react';
 import { parseDate } from '../../util/date';
 
 const colors = {
-  pending: 'orange',
+  pending: 'darkorange',
   accepted: 'green',
   rejected: 'redLight'
 }
