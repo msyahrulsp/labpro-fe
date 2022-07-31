@@ -28,18 +28,44 @@ export const Verifikasi = () => {
     itemsPerPage: 5
   })
 
+  const searchData = (trueVal, falseVal, val) => {
+    let searchedItem = defaultData;
+
+    if (val !== '') {
+      searchedItem = searchedItem.filter(
+        (item) =>
+          item.nama.toLowerCase().includes(val.toLowerCase()) ||
+          item.next_nama.toLowerCase().includes(val.toLowerCase())
+      );
+    }
+
+    let acc = []
+    if (trueVal) {
+      acc = searchedItem.filter((item) => item.tipe === 'akun');
+    }
+
+    let req = []
+    if (falseVal) {
+      req = searchedItem.filter((item) => item.tipe === 'request');
+    }
+
+    setData(acc.concat(req).sort((a, b) => b.created - a.created));
+    setPage(1);
+  }
+
   const handleTrue = (e) => {
     setFilter([e.target.checked, filter[1]]);
-    // searchData(e.target.checked, filter[1], search);
+    searchData(e.target.checked, filter[1], searchVal);
   }
 
   const handleFalse = (e) => {
     setFilter([filter[0], e.target.checked]);
-    // searchData(filter[0], e.target.checked, search);
+    searchData(filter[0], e.target.checked, searchVal);
   }
 
   const handleChange = (e) => {
-    console.log(e)
+    setSearchVal(e.target.value);
+    searchData(filter[0], filter[1], e.target.value);
   }
 
   useEffect(() => {
@@ -115,7 +141,6 @@ export const Verifikasi = () => {
           />
           {pagination.pageItems.length > 0 && !isLoading ? (
             pagination.pageItems.map((item) => {
-              console.log(item);
               return (
                 item.tipe === 'request' ? (
                   <VerifikasiRequestCard
@@ -137,6 +162,10 @@ export const Verifikasi = () => {
               </Center>
             )
           )}
+          <Pagination
+            {...pagination}
+            onPageChange={(page) => setPage(page)}
+          />
         </Container>
       ) : (
         isLoading ? <Loading /> : (

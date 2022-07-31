@@ -1,10 +1,52 @@
-import { Flex, Text, Container, Button } from '@chakra-ui/react';
+import { Flex, Text, Container, Button, useToast } from '@chakra-ui/react';
 import { parseDate } from '../../util/date';
+import { ConfirmModal } from '../Modal/ConfirmModal';
+import { putDataAPI } from '../../util/api';
+import { useAuth } from '../../hooks/useAuth';
+import { useState } from 'react';
 
 export const VerifikasiRequestCard = (props) => {
   const temp = parseDate(props.created).split('-');
   const tgl = temp[0];
-  const waktu = temp[1] + ' WIB'
+  const waktu = temp[1] + ' WIB';
+  const [isAccepted, setIsAccepted] = useState(true);
+  const toast = useToast();
+  const { getToken } = useAuth();
+
+  const handleAction = async () => {
+    const payload = {
+      id_history: props.id,
+      isAccepted
+    }
+
+    try {
+      await putDataAPI('/verification/requests', {
+        payload,
+        authorization: getToken()
+      })
+
+      toast({
+        title: 'Success',
+        description: 'Berhasil mengubah status verifikasi request',
+        status: 'success',
+        position: 'top',
+        isClosable: true
+      })
+
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000)
+    } catch (err) {
+      toast({
+        title: 'Error',
+        description: err.response?.data.message,
+        status: 'error',
+        position: 'top',
+        isClosable: true
+      })
+    }
+  }
+
   return (
     <Flex
       direction="column"
@@ -69,8 +111,26 @@ export const VerifikasiRequestCard = (props) => {
         mt={4}
         gap={4}
       >
-        <Button w="100%" bg="redLight">Reject</Button>
-        <Button w="100%" bg="darkCyan">Approve</Button>
+        <ConfirmModal handleAction={handleAction}>
+          <Button
+            w="100%"
+            color="white"
+            bg="redLight"
+            onClick={() => setIsAccepted(false)}
+          >
+            Reject
+          </Button>
+        </ConfirmModal>
+        <ConfirmModal handleAction={handleAction}>
+          <Button
+            w="100%"
+            color="white"
+            bg="darkCyan"
+            onClick={() => setIsAccepted(true)}
+          >
+            Approve
+          </Button>
+        </ConfirmModal>
       </Flex>
     </Flex>
   )
