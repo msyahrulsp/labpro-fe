@@ -1,4 +1,4 @@
-import { Link, matchPath } from 'react-router-dom';
+import { Link, matchPath, useNavigate } from 'react-router-dom';
 import {
   Flex,
   Box,
@@ -8,8 +8,10 @@ import {
 } from '@chakra-ui/react';
 import { LinkMenu } from '../component/Navbar/LinkMenu';
 import { LinkMenuMobile } from '../component/Navbar/LinkMenuMobile';
+import { useAuth } from '../hooks/useAuth';
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const link = {
     customer: [
       { label: "Request", to: "/request" },
@@ -21,6 +23,8 @@ export const Navbar = () => {
       { label: "Search", to: "/search" },
     ]
   }
+  const auth = useAuth();
+  const role = auth.user?.role ?? 'default';
 
   return (
     <Flex
@@ -49,26 +53,38 @@ export const Navbar = () => {
         flexDirection="row"
       >
         <Show above="lg">
-          {/* TODO benerin role */}
-          {link["admin"].map((item) => {
-            const loc = window.location.pathname.includes("/verifikasi") ?
-              "/verifikasi" : window.location.pathname;
-            const match = matchPath({ path: item.to }, loc);
-            return (
-              <Link to={item.to} key={item.label}>
-                <Button
-                  key={item.label}
-                  color={match ? "white" : "blue"}
-                  borderRadius="lg"
-                  bg={match ? "blue" : "white"}
-                  variant={match ? "solid" : "ghost"}
-                >
-                  {item.label}
-                </Button>
-              </Link>
-            )
-          })}
-          <LinkMenu />
+          {role !== 'default' ? (
+            link[role].map((item) => {
+              const loc = window.location.pathname.includes("/verifikasi") ?
+                "/verifikasi" : window.location.pathname;
+              const match = matchPath({ path: item.to }, loc);
+              return (
+                <Link to={item.to} key={item.label}>
+                  <Button
+                    key={item.label}
+                    color={match ? "white" : "blue"}
+                    borderRadius="lg"
+                    bg={match ? "blue" : "white"}
+                    variant={match ? "solid" : "ghost"}
+                  >
+                    {item.label}
+                  </Button>
+                </Link>
+              ) && <LinkMenu />
+            })
+          ) : (
+            <Button
+              onClick={() => navigate("/login")}
+              borderColor="darkCyan"
+              border="1px solid"
+              bg="blue"
+              color="white"
+              borderRadius="full"
+              w="15ch"
+            >
+              Login
+            </Button>
+          )}
         </Show>
         <Show below="lg">
           <LinkMenuMobile />

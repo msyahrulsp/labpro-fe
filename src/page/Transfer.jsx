@@ -6,18 +6,48 @@ import {
   FormLabel,
   Input,
   Button,
-  Select
+  Select,
+  FormErrorMessage
 } from '@chakra-ui/react';
 import { PageLayout } from '../layout/PageLayout';
 import { currencyList } from '../util/currency';
 
 export const Transfer = () => {
   const [val, setVal] = useState({
-    nominal: ""
+    norek: "",
+    currency: "IDR",
+    nominal: new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: "IDR",
+      minimumFractionDigits: 0
+    }).format(0),
   })
+  const validRek =
+    (val.norek.length === 10 && currencyList.includes(val.norek)) || val.norek.length === 0;
 
-  const handleNominal = (e) => {
-    setVal({ ...val, nominal: e.target.value });
+  const handleRek = (e) => {
+    setVal({
+      ...val,
+      norek: e.target.value
+    })
+  }
+
+  const handleSelect = (e) => {
+    handleNominal(e.target.value, val.nominal);
+  }
+
+  const handleNominal = (cur, value) => {
+    let num = parseInt(value.replace(/[^0-9]/g, ''));
+    if (!num) num = 0; 
+    setVal({
+      ...val,
+      currency: cur,
+      nominal: new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: cur,
+        minimumFractionDigits: 0
+      }).format(num)
+    });
   }
   
   useEffect(() => {
@@ -38,13 +68,25 @@ export const Transfer = () => {
           borderRadius="lg"
           boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
         >
-          <FormControl isRequired>
+          <FormControl isRequired isInvalid={!validRek}>
             <FormLabel>Rekening Tujuan</FormLabel>
-            <Input variant="flushed" type="number" pattern="[0-9]*" placeholder="No. Rekening" min="0" />
+            <Input
+              variant="flushed"
+              type="text"
+              pattern="[0-9]*"
+              placeholder="No. Rekening"
+              min="0"
+              value={val.norek}
+              onChange={handleRek}
+            />
+            {!validRek && <FormErrorMessage>No. Rekening tidak terdaftar</FormErrorMessage>}
           </FormControl>
           <FormControl isRequired mt={3}>
             <FormLabel>Currency</FormLabel>
-            <Select defaultValue="IDR">
+            <Select
+              value={val.currency}
+              onChange={handleSelect}
+            >
               {currencyList.map((item) => {
                 return (
                   <option key={item} value={item}>{item}</option>
@@ -56,12 +98,13 @@ export const Transfer = () => {
             <FormLabel>Nominal</FormLabel>
             <Input
               variant="flushed"
-              type="number"
+              type="text"
+              textAlign="right"
               pattern="[0-9]*"
               placeholder="Nominal"
               min="0"
               value={val.nominal}
-              onChange={handleNominal} 
+              onChange={(e) => handleNominal(val.currency, e.target.value)}
             />
           </FormControl>
           <Button

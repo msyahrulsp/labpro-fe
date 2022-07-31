@@ -59,6 +59,13 @@ export const useAuth = () => {
       })
       return data;
     } catch (err) {
+      toast({
+        title: "Error",
+        description: err.response?.data.message,
+        status: "error",
+        position: "top",
+        isClosable: true
+      })
       logout();
     }
   }
