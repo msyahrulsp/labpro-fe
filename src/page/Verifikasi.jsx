@@ -49,7 +49,7 @@ export const Verifikasi = () => {
       req = searchedItem.filter((item) => item.tipe === 'request');
     }
 
-    setData(acc.concat(req).sort((a, b) => b.created - a.created));
+    setData(acc.concat(req).sort((a, b) => new Date(b.created) - new Date(a.created)));
     setPage(1);
   }
 
@@ -99,14 +99,14 @@ export const Verifikasi = () => {
                 next_nama: item2.tipe_util,
                 util: item2.currency,
                 util2: item2.nominal,
-                created: item.created_at,
+                created: item2.created_at,
               }
             })
           )
         });
         tempReq = [].concat.apply([], tempReq);
         const data = tempReq.concat(tempAcc)
-          .sort((a, b) => b.created_at - a.created_at)
+          .sort((a, b) => new Date(b.created) - new Date(a.created));
         setData(data);
         setDefaultData(data);
         setIsLoading(false);
