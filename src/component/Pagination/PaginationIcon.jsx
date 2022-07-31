@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-export default function PaginationItemIcon({
+export const PaginationItemIcon = ({
   icon,
   page,
   onPageChange,
-}) {
+}) => {
   return (
     <Box
       display="flex"

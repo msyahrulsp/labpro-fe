@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-export default function PaginationItem({
+export const PaginationItem = ({
   isCurrent = false,
   page,
   onPageChange,
-}) {
+}) => {
   if (isCurrent) {
     return (
       <Box

@@ -7,8 +7,12 @@ import {
 } from "@chakra-ui/react";
 import { PageLayout } from "../layout/PageLayout";
 import { BiRightArrowAlt } from "react-icons/bi";
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Home - BNMO";
   }, []);
@@ -31,7 +35,15 @@ export const Home = () => {
           <Text as="b" fontSize="2xl" color="darkCyan">
             Memainkan Uang dengan<br />BNMO
           </Text>
-          <Button bg="blue" color="white">Cek Profile&nbsp;<BiRightArrowAlt /></Button>
+          {auth.user === null ? (
+            <Button bg="blue" color="white" onClick={() => navigate("/login")}>Login&nbsp;<BiRightArrowAlt /></Button>
+          ) : (
+            auth.user?.role === 'admin' ? (
+              <Button bg="blue" color="white" onClick={() => navigate("/verifikasi")}>Cek Verifikasi&nbsp;<BiRightArrowAlt /></Button>
+            ) : (
+              <Button bg="blue" color="white" onClick={() => navigate("/profile")}>Cek Profile&nbsp;<BiRightArrowAlt /></Button>
+            )
+          )}
         </Flex>
         <Image src={require("../image/logo.png")} alt="logo" objectFit="inherit" />
       </Flex>

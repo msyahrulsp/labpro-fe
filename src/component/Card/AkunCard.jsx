@@ -28,19 +28,24 @@ export const AkunCard = (props) => {
           />
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">Nama Akun</Text>
-            <Text opacity="0.85">M Syahrul Surya Putra</Text>
+            <Text opacity="0.85">{props.nama}</Text>
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">Username</Text>
-            <Text opacity="0.85">msyahrulsp</Text>
+            <Text opacity="0.85">{props.username}</Text>
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">No. Rekening</Text>
-            <Text opacity="0.85">123456789</Text>
+            <Text opacity="0.85">{props.norek}</Text>
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">Saldo</Text>
-            <Text opacity="0.85">Rp. 123123123</Text>
+            <Text opacity="0.85">
+              {new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              }).format(props.saldo)}
+            </Text>
           </Flex>
         </Flex>
       </Container>

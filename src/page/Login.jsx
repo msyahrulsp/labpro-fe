@@ -7,17 +7,60 @@ import {
   Input,
   InputRightElement,
   Button,
-  FormControl
+  FormControl,
+  useToast
 } from "@chakra-ui/react";
 import { BsFillPersonFill, BsEyeSlash, BsEye, BsFillLockFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PageAnimate } from "../layout/PageLayout";
+import { useAuth } from "../hooks/useAuth";
 
 export const Login = () => {
   const [show, setShow] = useState(false);
+  const [log, setLog] = useState({
+    username: "",
+    password: ""
+  });
+  const toast = useToast();
+  const navigate = useNavigate();
+  const auth = useAuth();
+
+  const handleUsername = (e) => {
+    setLog({ ...log, username: e.target.value });
+  }
+
+  const handlePassword = (e) => {
+    setLog({ ...log, password: e.target.value });
+  }
+
+  const handleLogin = async () => {
+    try {
+      await auth.login(log)
+      navigate("/");
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: err.response?.data.message,
+        status: "error",
+        position: "top",
+        isClosable: true
+      })
+    }
+  }
 
   useEffect(() => {
     document.title = "Login - BNMO";
+    if (auth.user !== null) {
+      navigate("/");
+      toast({
+        title: "Auth",
+        description: "Kamu sudah login",
+        status: "warning",
+        position: "top",
+        isClosable: true
+      })
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -43,7 +86,13 @@ export const Login = () => {
                 pointerEvents="none"
                 children={<BsFillPersonFill />}
               />
-              <Input variant="flushed" type="text" placeholder="Username" />
+              <Input
+                variant="flushed"
+                type="text"
+                placeholder="Username"
+                value={log.username}
+                onChange={handleUsername}
+              />
             </InputGroup>
           </FormControl>
           <FormControl>
@@ -52,7 +101,13 @@ export const Login = () => {
                 pointerEvents="none"
                 children={<BsFillLockFill />}
               />
-              <Input variant="flushed" type={show ? "text" : "password"} placeholder="Password" />
+              <Input
+                variant="flushed"
+                type={show ? "text" : "password"}
+                placeholder="Password" 
+                value={log.password}
+                onChange={handlePassword}
+              />
               <InputRightElement
                 children={!show ? <BsEyeSlash /> : <BsEye />}
                 onClick={() => setShow(!show)}
@@ -80,7 +135,7 @@ export const Login = () => {
             color="white"
             borderRadius="lg"
             mt={2}
-            onClick={() => console.log(window.location.pathname)}
+            onClick={handleLogin}
           >
             Login
           </Button>

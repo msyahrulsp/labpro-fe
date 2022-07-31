@@ -2,16 +2,16 @@ import React from 'react';
 import { Stack, Text } from '@chakra-ui/react';
 import { ChevronRightIcon, ChevronLeftIcon } from '@chakra-ui/icons';
 
-import PaginationItem from './PaginationItem'
-import PaginationItemIcon from './PaginationIcon';
+import { PaginationItem } from './PaginationItem'
+import { PaginationItemIcon } from './PaginationIcon';
 
-export default function Pagination({
+export const Pagination = ({
   currentPage,
   lastPage,
   nextPages,
   prevPages,
   onPageChange,
-}) {
+}) => {
   return (
     <Stack direction="row" mt="8" justify="center" spacing="5">
       <Stack direction="row" spacing="1" w={{ base: '70%', lg: 'fit-content' }} userSelect="none">

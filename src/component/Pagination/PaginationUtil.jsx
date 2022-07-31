@@ -4,12 +4,12 @@ function generateArray(start, end) {
     .filter((page) => page > 0);
 }
 
-export default function usePagination({
+export const usePagination = ({
   totalItem,
   page,
   items,
   itemsPerPage,
-}) {
+}) => {
   const currentPage = page;
   const lastPage = Math.ceil(totalItem / itemsPerPage);
   const totalPage = lastPage === 0 ? 1 : lastPage;

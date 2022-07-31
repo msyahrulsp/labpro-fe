@@ -59,7 +59,7 @@ export const VerifikasiAkunCard = (props) => {
         mt={4}
         gap={4}
       >
-        <Button w="100%" bg="red">Reject</Button>
+        <Button w="100%" bg="redLight">Reject</Button>
         <Button w="100%" bg="darkCyan">Approve</Button>
       </Flex>
     </Flex>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Flex } from '@chakra-ui/react';
 import {
   BrowserRouter as Router,
@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { routes } from './util/route';
 import { AnimatePresence } from 'framer-motion';
+import { UserContext } from './context/UserContext';
 
 const AnimatedRoute = () => {
   return (
@@ -28,16 +29,21 @@ const AnimatedRoute = () => {
 }
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [listRek, setListRek] = useState([]);
+
   return (
-    <Router>
-      <Flex
-        direction="column"
-        bg="cyan"
-        minH='100vh'
-      >
-        <AnimatedRoute />
-      </Flex>
-    </Router>
+    <UserContext.Provider value={{ user, setUser, listRek, setListRek }}>
+      <Router>
+        <Flex
+          direction="column"
+          bg="cyan"
+          minH='100vh'
+        >
+          <AnimatedRoute />
+        </Flex>
+      </Router>
+    </UserContext.Provider>
   );
 }
 

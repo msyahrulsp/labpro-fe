@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   Flex,
   FormControl,
   FormLabel,
-  Text,
   Input,
   Button,
   Select
@@ -13,6 +12,14 @@ import { PageLayout } from '../layout/PageLayout';
 import { currencyList } from '../util/currency';
 
 export const Transfer = () => {
+  const [val, setVal] = useState({
+    nominal: ""
+  })
+
+  const handleNominal = (e) => {
+    setVal({ ...val, nominal: e.target.value });
+  }
+  
   useEffect(() => {
     document.title = "Transfer - BNMO";
   }, []);
@@ -47,7 +54,15 @@ export const Transfer = () => {
           </FormControl>
           <FormControl isRequired mt={3}>
             <FormLabel>Nominal</FormLabel>
-            <Input variant="flushed" type="number" pattern="[0-9]*" placeholder="Nominal" min="0" />
+            <Input
+              variant="flushed"
+              type="number"
+              pattern="[0-9]*"
+              placeholder="Nominal"
+              min="0"
+              value={val.nominal}
+              onChange={handleNominal} 
+            />
           </FormControl>
           <Button
             mt={5}

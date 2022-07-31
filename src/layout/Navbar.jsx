@@ -50,7 +50,7 @@ export const Navbar = () => {
       >
         <Show above="lg">
           {/* TODO benerin role */}
-          {link["customer"].map((item) => {
+          {link["admin"].map((item) => {
             const loc = window.location.pathname.includes("/verifikasi") ?
               "/verifikasi" : window.location.pathname;
             const match = matchPath({ path: item.to }, loc);
