@@ -7,17 +7,88 @@ import {
   InputRightElement,
   Button,
   FormControl,
-  FormLabel
+  FormLabel,
+  useToast
 } from "@chakra-ui/react";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PageAnimate } from "../layout/PageLayout";
+import { postDataAPI } from "../util/api";
 
 export const Register = () => {
   const [show, setShow] = useState({
     password: false,
     confirmPassword: false
   });
+  const [registData, setRegistData] = useState({
+    username: "",
+    password: "",
+    nama: "",
+    ktp: null
+  })
+  const toast = useToast();
+  const navigate = useNavigate();
+
+  const handleRegister = async () => {
+    if (!registData.username && !registData.password && !registData.nama) {
+      toast({
+        title: "Error",
+        description: "Harap semua isi semua field",
+        status: "error",
+        position: "top",
+        isClosable: true
+      })
+      return;
+    }
+    if (registData.password.length < 6) {
+      toast({
+        title: "Error",
+        description: "Password minimal 6 karakter",
+        status: "error",
+        position: "top",
+        isClosable: true
+      })
+      return;
+    }
+    if (registData.password !== registData.confirmPassword) {
+      toast({
+        title: "Error",
+        description: "Password tidak sama",
+        status: "error",
+        position: "top",
+        isClosable: true
+      })
+      return;
+    }
+
+    try {
+      const data = {
+        username: registData.username,
+        password: registData.password,
+        nama: registData.nama,
+        ktp: registData.ktp
+      }
+      await postDataAPI("/register", {
+        payload: data
+      });
+      toast({
+        title: "Success",
+        description: "Data berhasil diregister. Silahkan tunggu konfirmasi dari admin",
+        status: "success",
+        position: "top",
+        isClosable: true
+      });
+      navigate('/');
+    } catch (e) {
+      toast({
+        title: "Error",
+        description: e.response?.data.message,
+        status: "error",
+        position: "top",
+        isClosable: true
+      })
+    }
+  }
 
   useEffect(() => {
     document.title = "Register - BNMO";
@@ -43,11 +114,25 @@ export const Register = () => {
         >
           <FormControl isRequired>
             <FormLabel>Nama</FormLabel>
-            <Input size="sm" variant="flushed" type="text" placeholder="Masukkan Nama" />
+            <Input
+              size="sm"
+              variant="flushed"
+              type="text"
+              placeholder="Masukkan Nama"
+              value={registData.nama}
+              onChange={(e) => setRegistData({ ...registData, nama: e.target.value })}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Username</FormLabel>
-            <Input size="sm" variant="flushed" type="text" placeholder="Masukkan Username" />
+            <Input
+              size="sm"
+              variant="flushed"
+              type="text"
+              placeholder="Masukkan Username" 
+              value={registData.username}
+              onChange={(e) => setRegistData({ ...registData, username: e.target.value })}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>
@@ -57,6 +142,8 @@ export const Register = () => {
                 variant="flushed"
                 type={show.password ? "text" : "password"}
                 placeholder="Masukkan Password"
+                value={registData.password}
+                onChange={(e) => setRegistData({ ...registData, password: e.target.value })}
               />
               <InputRightElement
                 children={!show.password ? <BsEyeSlash /> : <BsEye />}
@@ -75,6 +162,8 @@ export const Register = () => {
                 variant="flushed"
                 type={show.confirmPassword ? "text" : "password"}
                 placeholder="Konfirmasi Password"
+                value={registData.confirmPassword}
+                onChange={(e) => setRegistData({ ...registData, confirmPassword: e.target.value })}
               />
               <InputRightElement
                 children={!show.confirmPassword ? <BsEyeSlash /> : <BsEye />}
@@ -107,7 +196,7 @@ export const Register = () => {
             color="white"
             borderRadius="lg"
             mt={2}
-            onClick={() => console.log("Handle Login")}
+            onClick={handleRegister}
           >
             Register
           </Button>
