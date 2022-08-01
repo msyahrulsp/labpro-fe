@@ -230,7 +230,7 @@ export const Register = () => {
             borderRadius="lg"
             mt={2}
             onClick={handleRegister}
-            isLoading={processing}
+            isDisabled={processing}
           >
             {processing ? <Spinner speed="0.7s" size="md" /> : "Register"}
           </Button>
