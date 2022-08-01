@@ -26,6 +26,9 @@ export const History = () => {
     items: data,
     itemsPerPage: 5
   })
+  const searchDesc =
+    "Kamu bisa gunakan search ini untuk mencari Tipe Request, Rekening Tujuang dan Status history"
+  const searchQuery = ["Pengurangan", "111765", "Pending"]
 
   const searchData = (trueVal, falseVal, val) => {
     let searchedItem = defaultData;
@@ -106,6 +109,8 @@ export const History = () => {
             trueVal={filter[0]}
             falseVal={filter[1]}
             options={['Transfer Saldo', 'Request Saldo']}
+            description={searchDesc}
+            query={searchQuery}
           />
           {pagination.pageItems.length > 0 && !isLoading ? (
             pagination.pageItems.map((item) => {

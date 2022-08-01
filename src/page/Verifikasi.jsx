@@ -27,6 +27,9 @@ export const Verifikasi = () => {
     items: data,
     itemsPerPage: 5
   })
+  const searchDesc =
+    "Kamu bisa gunakan search ini untuk mencari Nama, Username atau Tipe Request dari user"
+  const searchQuery = ["Piye Kabare", "piye", "Penambahan"]
 
   const searchData = (trueVal, falseVal, val) => {
     let searchedItem = defaultData;
@@ -138,6 +141,8 @@ export const Verifikasi = () => {
             trueVal={filter[0]}
             falseVal={filter[1]}
             options={['Verifikasi Akun', 'Request Saldo']}
+            description={searchDesc}
+            query={searchQuery}
           />
           {pagination.pageItems.length > 0 && !isLoading ? (
             pagination.pageItems.map((item) => {

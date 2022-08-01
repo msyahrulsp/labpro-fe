@@ -19,7 +19,22 @@ const theme = extendTheme({
     initialColorMode: 'light',
     useSystemColorMode: false,
   },
-  colors,
+  styles: {
+    global: {
+      '*': {
+        '&::-webkit-scrollbar': {
+          w: '2'
+        },
+        '&::-webkit-scrollbar-track': {
+          backgroundColor: 'cyan'
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: 'blue'
+        }
+      }
+    }
+  },
+  colors
 })
 
 export default theme;

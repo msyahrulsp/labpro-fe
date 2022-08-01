@@ -25,6 +25,9 @@ export const Search = () => {
     items: data,
     itemsPerPage: 5
   });
+  const searchDesc =
+    "Kamu bisa gunakan search ini untuk mencari Nama, Username, atau No Rekening dari user"
+  const searchQuery = ["Bimo", "Customer", "111765"]
 
   const searchData = (searchVal) => {
     let searchedItem = defaultData;
@@ -81,6 +84,8 @@ export const Search = () => {
           <SearchBar
             onChange={handleChange}
             value={searchVal}
+            description={searchDesc}
+            query={searchQuery}
           />
           {pagination.pageItems.length > 0 && !loading ? (
             pagination.pageItems.map((item) => {
