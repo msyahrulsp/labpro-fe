@@ -22,7 +22,7 @@ export const ImageModal = ({ children, src, align }) => {
       >
         {children}
       </Flex>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent bg="transparent">
           <ModalBody pb={6}>
