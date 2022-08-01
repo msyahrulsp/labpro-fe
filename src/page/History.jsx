@@ -116,7 +116,7 @@ export const History = () => {
             pagination.pageItems.map((item) => {
               return (
                 <HistoryCard
-                  key={item.id}
+                  key={item.id_history}
                   {...item}
                 />
               )
