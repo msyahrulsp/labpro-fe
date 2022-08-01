@@ -8,7 +8,8 @@ import {
   InputRightElement,
   Button,
   FormControl,
-  useToast
+  useToast,
+  Spinner
 } from "@chakra-ui/react";
 import { BsFillPersonFill, BsEyeSlash, BsEye, BsFillLockFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,6 +22,7 @@ export const Login = () => {
     username: "",
     password: ""
   });
+  const [processing, setProcessing] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
   const auth = useAuth();
@@ -35,6 +37,7 @@ export const Login = () => {
 
   const handleLogin = async () => {
     try {
+      setProcessing(true);
       await auth.login(log)
     } catch (err) {
       toast({
@@ -49,6 +52,7 @@ export const Login = () => {
         password: ""
       });
     }
+    setProcessing(true);
   }
 
   useEffect(() => {
@@ -140,8 +144,9 @@ export const Login = () => {
             borderRadius="lg"
             mt={2}
             onClick={handleLogin}
+            isDisabled={processing}
           >
-            Login
+            {processing ? <Spinner speed="0.7s" size="md" /> : "Login"}
           </Button>
         </Flex>
       </Flex>

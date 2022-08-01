@@ -9,7 +9,8 @@ import {
   Stack,
   Button,
   Select,
-  useToast
+  useToast,
+  Spinner
 } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +31,7 @@ export const Request = () => {
       minimumFractionDigits: 0
     }).format(0),
   })
+  const [processing, setProcessing] = useState(false);
   const { isAuthorized } = useRole('customer');
   const { user, getToken } = useAuth();
   const toast = useToast();
@@ -56,6 +58,7 @@ export const Request = () => {
   const handleRequest = async () => {
     const parsedNominal = parseInt(val.nominal.replace(/[^0-9]/g, ''));
     try {
+      setProcessing(true);
       const payload = {
         username: user.username,
         tipe_request: type,
@@ -85,6 +88,7 @@ export const Request = () => {
         isClosable: true
       })
     }
+    setProcessing(false);
   }
 
   useEffect(() => {
@@ -143,8 +147,9 @@ export const Request = () => {
               bg="darkCyan"
               w="100%"
               onClick={handleRequest}
+              isDisabled={processing}
             >
-              Request
+              {processing ? <Spinner speed="0.7s" size="md" /> : "Request"}
             </Button>
           </Flex>
         </Container>

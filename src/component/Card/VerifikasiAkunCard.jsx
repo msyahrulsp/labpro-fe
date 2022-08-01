@@ -1,4 +1,4 @@
-import { Flex, Text, Container, Button, Image, useToast } from '@chakra-ui/react';
+import { Flex, Text, Container, Button, Image, useToast, Spinner } from '@chakra-ui/react';
 import { parseDate } from '../../util/date';
 import { ConfirmModal } from '../Modal/ConfirmModal';
 import { putDataAPI } from '../../util/api';
@@ -11,6 +11,7 @@ export const VerifikasiAkunCard = (props) => {
   const tgl = temp[0];
   const waktu = temp[1] + ' WIB';
   const [isAccepted, setIsAccepted] = useState(true);
+  const [processing, setProcessing] = useState(false);
   const toast = useToast();
   const { getToken } = useAuth();
 
@@ -21,6 +22,7 @@ export const VerifikasiAkunCard = (props) => {
     }
 
     try {
+      setProcessing(true);
       await putDataAPI('/verification/accounts', {
         payload,
         authorization: getToken()
@@ -46,6 +48,7 @@ export const VerifikasiAkunCard = (props) => {
         isClosable: true
       })
     }
+    setProcessing(false);
   }
 
   return (
@@ -127,8 +130,9 @@ export const VerifikasiAkunCard = (props) => {
             color="white"
             bg="redLight"
             onClick={() => setIsAccepted(false)}
+            isDisabled={processing}
           >
-            Reject
+            {processing && !isAccepted ? <Spinner speed="0.7s" size="md" /> : 'Reject'}
           </Button>
         </ConfirmModal>
         <ConfirmModal handleAction={handleAction}>
@@ -137,8 +141,9 @@ export const VerifikasiAkunCard = (props) => {
             color="white"
             bg="darkCyan"
             onClick={() => setIsAccepted(true)}
+            isDisabled={processing}
           >
-            Approve
+            {processing && isAccepted ? <Spinner speed="0.7s" size="md" /> : 'Approve'}
           </Button>
         </ConfirmModal>
       </Flex>

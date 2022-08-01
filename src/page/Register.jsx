@@ -8,7 +8,8 @@ import {
   Button,
   FormControl,
   FormLabel,
-  useToast
+  useToast,
+  Spinner
 } from "@chakra-ui/react";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
@@ -27,6 +28,7 @@ export const Register = () => {
     ktp: null,
     ktp_name: ""
   })
+  const [processing, setProcessing] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -67,6 +69,7 @@ export const Register = () => {
     }
 
     try {
+      setProcessing(true);
       const formData = new FormData();
       formData.append("username", registData.username);
       formData.append("password", registData.password);
@@ -93,6 +96,7 @@ export const Register = () => {
         isClosable: true
       })
     }
+    setProcessing(false);
   }
 
   useEffect(() => {
@@ -231,8 +235,9 @@ export const Register = () => {
             borderRadius="lg"
             mt={2}
             onClick={handleRegister}
+            isLoading={processing}
           >
-            Register
+            {processing ? <Spinner speed="0.7s" size="md" /> : "Register"}
           </Button>
         </Flex>
       </Flex>

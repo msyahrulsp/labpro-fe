@@ -7,7 +7,8 @@ import {
   Input,
   Button,
   Select,
-  useToast
+  useToast,
+  Spinner
 } from '@chakra-ui/react';
 import { PageLayout } from '../layout/PageLayout';
 import { currencyList } from '../util/currency';
@@ -28,6 +29,7 @@ export const Transfer = () => {
       minimumFractionDigits: 0
     }).format(0),
   })
+  const [processing, setProcessing] = useState(false);
   const { listRek, user, getToken } = useAuth();
   const { isAuthorized } = useRole('customer');
   const toast = useToast();
@@ -61,6 +63,7 @@ export const Transfer = () => {
   const handleTranfer = async () => {
     const parsedNominal = parseInt(val.nominal.replace(/[^0-9]/g, ''));
     try {
+      setProcessing(true);
       const payload = {
         username: user.username,
         norek: val.norek,
@@ -90,6 +93,7 @@ export const Transfer = () => {
         isClosable: true
       })
     }
+    setProcessing(false);
   }
   
   useEffect(() => {
@@ -139,7 +143,7 @@ export const Transfer = () => {
                       status: "error",
                       position: "top",
                       isClosable: true
-                    }) && console.log(val.norek) && console.log(listRek)}
+                    })}
                   }
                 >
                   Lanjut
@@ -178,8 +182,9 @@ export const Transfer = () => {
                   bg="darkCyan"
                   w="100%"
                   onClick={handleTranfer}
+                  isDisabled={processing}
                 >
-                  Transfer
+                  {processing ? <Spinner speed="0.7s" size="md" /> : "Transfer"}
                 </Button>
               </>
             )}

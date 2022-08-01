@@ -1,9 +1,10 @@
-import { Container, Flex, Text, Avatar } from "@chakra-ui/react";
+import { Container, Flex, Text, Image } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useRole } from "../hooks/useRole";
 import { useAuth } from "../hooks/useAuth";
 import { PageLayout } from "../layout/PageLayout";
 import { Loading } from "../component/Loading/Loading";
+import { ImageModal } from "../component/Modal/ImageModal";
 
 export const Profile = () => {
   const { isAuthorized } = useRole('customer');
@@ -39,7 +40,20 @@ export const Profile = () => {
               borderRadius="lg"
               boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
             >
-              <Avatar mb={4} src={require("../image/logo.png")} bg="inherit" size="lg" name={user.nama} />
+              <ImageModal
+                src={user.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${user.ktp}` : require("../image/logo.png")}
+                align="center"
+              >
+                <Image
+                  src={user.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${user.ktp}` : require("../image/logo.png")}
+                  alt="Logo"
+                  objectFit="contain"
+                  maxW="15ch"
+                  maxH="15ch"
+                  alignSelf="center"
+                  cursor="pointer"
+                />
+              </ImageModal>
               {data.map((item, idx) => {
                 return (
                   <Container
