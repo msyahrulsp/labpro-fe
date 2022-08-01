@@ -24,13 +24,18 @@ export const Register = () => {
     username: "",
     password: "",
     nama: "",
-    ktp: null
+    ktp: null,
+    ktp_name: ""
   })
   const toast = useToast();
   const navigate = useNavigate();
 
+  const getExt = (name) => {
+    return name.split('.')[1];
+  }
+
   const handleRegister = async () => {
-    if (!registData.username && !registData.password && !registData.nama) {
+    if (!registData.username && !registData.password && !registData.nama && !registData.ktp) {
       toast({
         title: "Error",
         description: "Harap semua isi semua field",
@@ -62,14 +67,14 @@ export const Register = () => {
     }
 
     try {
-      const data = {
-        username: registData.username,
-        password: registData.password,
-        nama: registData.nama,
-        ktp: registData.ktp
-      }
+      const formData = new FormData();
+      formData.append("username", registData.username);
+      formData.append("password", registData.password);
+      formData.append("nama", registData.nama);
+      formData.append("ktp", registData.ktp);
+      formData.append("ktp_name", registData.ktp_name);
       await postDataAPI("/register", {
-        payload: data
+        payload: formData
       });
       toast({
         title: "Success",
@@ -176,21 +181,50 @@ export const Register = () => {
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Upload KTP</FormLabel>
-            <Input size="sm" variant="flushed" type="file" />
+            <Input
+              size="sm"
+              variant="flushed"
+              type="file"
+              onChange={(e) => {
+                if (e.target.files[0].size < 1048576) {
+                  setRegistData({ 
+                    ...registData,
+                    ktp: e.target.files[0],
+                    ktp_name: registData.username + '.' + getExt(e.target.files[0].name)
+                  })
+                } else {
+                  toast({
+                    title: "Error",
+                    description: "Ukuran file maksimal 1 MB",
+                    status: "error",
+                    position: "top",
+                    isClosable: true
+                  })
+                  e.target.value = null;
+                  setRegistData({
+                    ...registData,
+                    ktp: null,
+                    ktp_name: "" 
+                  })
+                }
+              }}
+              accept=".jpeg, .jpg, .png"
+            />
           </FormControl>
-          <Link to="/login">
-            <Text
-              fontSize="xs"
-              mt={-2}
-              textAlign="right"
-              color="blue"
-              _hover={{ opacity: 0.5 }}
-              opacity={1}
-              transition="all 0.15s"
-            >
+          <Text
+            fontSize="xs"
+            mt={-2}
+            w="fit-content"
+            alignSelf="flex-end"
+            color="blue"
+            _hover={{ opacity: 0.5 }}
+            opacity={1}
+            transition="all 0.15s"
+          >
+            <Link to="/login">
               Sudah punya akun?
-            </Text>
-          </Link>
+            </Link>
+          </Text>
           <Button
             bg="#077B8A"
             color="white"

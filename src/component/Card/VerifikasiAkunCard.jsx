@@ -4,6 +4,7 @@ import { ConfirmModal } from '../Modal/ConfirmModal';
 import { putDataAPI } from '../../util/api';
 import { useAuth } from '../../hooks/useAuth';
 import { useState } from 'react';
+import { ImageModal } from '../Modal/ImageModal';
 
 export const VerifikasiAkunCard = (props) => {
   const temp = parseDate(props.created).split('-');
@@ -97,7 +98,18 @@ export const VerifikasiAkunCard = (props) => {
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue" alignSelf="center">KTP</Text>
-            <Image src={require("../../image/logo.png")} alt="Logo" objectFit="contain" w="15ch" />
+            <ImageModal
+              src={props.util ? `${process.env.REACT_APP_API_URL}/static/images/${props.util}`: require("../../image/logo.png")}
+              align="flex-end"
+            >
+              <Image
+                cursor="pointer"
+                src={props.util ? `${process.env.REACT_APP_API_URL}/static/images/${props.util}` : require("../../image/logo.png")}
+                alt="Logo"
+                objectFit="contain"
+                w="15ch"
+              />
+            </ImageModal>
           </Flex>
         </Flex>
       </Container>

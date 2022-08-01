@@ -64,7 +64,7 @@ export const Login = () => {
       })
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [auth.user]);
 
   return (
     <PageAnimate>
@@ -120,19 +120,20 @@ export const Login = () => {
               />
             </InputGroup>
           </FormControl>
-          <Link to="/register">
-            <Text
-              fontSize="xs"
-              mt={-2}
-              textAlign="right"
-              color="blue"
-              _hover={{ opacity: 0.5 }}
-              opacity={1}
-              transition="all 0.15s"
-            >
+          <Text
+            fontSize="xs"
+            mt={-2}
+            w="fit-content"
+            alignSelf="flex-end"
+            color="blue"
+            _hover={{ opacity: 0.5 }}
+            opacity={1}
+            transition="all 0.15s"
+          >
+            <Link to="/register">
               Belum punya akun?
-            </Text>
-          </Link>
+            </Link>
+          </Text>
           <Button
             bg="#077B8A"
             color="white"

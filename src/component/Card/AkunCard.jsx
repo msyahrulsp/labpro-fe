@@ -1,4 +1,5 @@
 import { Flex, Text, Container, Image } from '@chakra-ui/react';
+import { ImageModal } from '../Modal/ImageModal';
 
 export const AkunCard = (props) => {
   return (
@@ -19,13 +20,20 @@ export const AkunCard = (props) => {
         gap={5}
       >
         <Flex direction="column" w="100%" gap={2}>
-          <Image
-            src={require("../../image/logo.png")}
-            alt="Logo"
-            objectFit="contain"
-            w="15ch"
-            alignSelf="center" 
-          />
+          <ImageModal
+            src={props.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${props.ktp}` : require("../../image/logo.png")}
+            align="center"
+          >
+            <Image
+              src={props.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${props.ktp}` : require("../../image/logo.png")}
+              alt="Logo"
+              objectFit="contain"
+              maxW="15ch"
+              maxH="15ch"
+              alignSelf="center"
+              cursor="pointer"
+            />
+          </ImageModal>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue">Nama Akun</Text>
             <Text opacity="0.85">{props.nama}</Text>

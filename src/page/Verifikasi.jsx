@@ -52,7 +52,7 @@ export const Verifikasi = () => {
       req = searchedItem.filter((item) => item.tipe === 'request');
     }
 
-    setData(acc.concat(req).sort((a, b) => new Date(b.created) - new Date(a.created)));
+    setData(acc.concat(req).sort((a, b) => new Date(a.created) - new Date(b.created)));
     setPage(1);
   }
 
@@ -109,7 +109,7 @@ export const Verifikasi = () => {
         });
         tempReq = [].concat.apply([], tempReq);
         const data = tempReq.concat(tempAcc)
-          .sort((a, b) => new Date(b.created) - new Date(a.created));
+          .sort((a, b) => new Date(a.created) - new Date(b.created));
         setData(data);
         setDefaultData(data);
         setIsLoading(false);
