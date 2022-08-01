@@ -82,7 +82,7 @@ export const Request = () => {
     } catch (err) {
       toast({
         title: "Error",
-        description: err.response?.data.message,
+        description: err.response?.data.message ?? err.message,
         status: "error",
         position: "top",
         isClosable: true

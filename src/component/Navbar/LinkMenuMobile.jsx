@@ -22,6 +22,7 @@ export const LinkMenuMobile = () => {
       { label: "Request", to: "/request" },
       { label: "Transfer", to: "/transfer" },
       { label: "History", to: "/history" },
+      { label: "Profile", to: "/profile" },
       { label: "Logout", to: "/" }
     ],
     admin: [

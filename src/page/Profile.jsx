@@ -46,7 +46,7 @@ export const Profile = () => {
               >
                 <Image
                   src={user.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${user.ktp}` : require("../image/logo.png")}
-                  alt="Logo"
+                  alt="ktp"
                   objectFit="contain"
                   maxW="15ch"
                   maxH="15ch"

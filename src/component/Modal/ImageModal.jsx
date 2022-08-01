@@ -3,6 +3,7 @@ import {
   ModalOverlay,
   ModalContent,
   ModalBody,
+  ModalCloseButton,
   useDisclosure,
   Flex,
   Image
@@ -24,7 +25,8 @@ export const ImageModal = ({ children, src, align }) => {
       </Flex>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent bg="transparent">
+        <ModalContent>
+          <ModalCloseButton />
           <ModalBody pb={6}>
             <Image src={src} />
           </ModalBody>

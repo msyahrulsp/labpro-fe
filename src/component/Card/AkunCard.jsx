@@ -26,7 +26,7 @@ export const AkunCard = (props) => {
           >
             <Image
               src={props.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${props.ktp}` : require("../../image/logo.png")}
-              alt="Logo"
+              alt="ktp"
               objectFit="contain"
               maxW="15ch"
               maxH="15ch"

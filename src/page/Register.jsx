@@ -25,16 +25,13 @@ export const Register = () => {
     username: "",
     password: "",
     nama: "",
-    ktp: null,
-    ktp_name: ""
+    ktp: null
   })
   const [processing, setProcessing] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
-
-  const getExt = (name) => {
-    return name.split('.')[1];
-  }
+  // safecase diganti type manual di folder input
+  const validExt = ["image/jpg", "image/jpeg", "image/png"];
 
   const handleRegister = async () => {
     if (!registData.username && !registData.password && !registData.nama && !registData.ktp) {
@@ -75,7 +72,6 @@ export const Register = () => {
       formData.append("password", registData.password);
       formData.append("nama", registData.nama);
       formData.append("ktp", registData.ktp);
-      formData.append("ktp_name", registData.ktp_name);
       await postDataAPI("/register", {
         payload: formData
       });
@@ -190,16 +186,15 @@ export const Register = () => {
               variant="flushed"
               type="file"
               onChange={(e) => {
-                if (e.target.files[0].size < 1048576) {
+                if (e.target.files[0].size < 2097152 && validExt.indexOf(e.target.files[0].type) !== -1) {
                   setRegistData({ 
                     ...registData,
-                    ktp: e.target.files[0],
-                    ktp_name: registData.username + '.' + getExt(e.target.files[0].name)
+                    ktp: e.target.files[0]
                   })
                 } else {
                   toast({
                     title: "Error",
-                    description: "Ukuran file maksimal 1 MB",
+                    description: "File harus .jpg, .jpeg, atau .png dan size maksimal 2MB",
                     status: "error",
                     position: "top",
                     isClosable: true
@@ -207,10 +202,10 @@ export const Register = () => {
                   e.target.value = null;
                   setRegistData({
                     ...registData,
-                    ktp: null,
-                    ktp_name: "" 
+                    ktp: null
                   })
                 }
+                console.log(e.target.files[0]);
               }}
               accept=".jpeg, .jpg, .png"
             />

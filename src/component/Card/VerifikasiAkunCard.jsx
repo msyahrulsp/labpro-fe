@@ -42,7 +42,7 @@ export const VerifikasiAkunCard = (props) => {
     } catch (err) {
       toast({
         title: 'Error',
-        description: err.response?.data.message,
+        description: err.response?.data.message ?? err.message,
         status: 'error',
         position: 'top',
         isClosable: true
@@ -108,7 +108,7 @@ export const VerifikasiAkunCard = (props) => {
               <Image
                 cursor="pointer"
                 src={props.util ? `${process.env.REACT_APP_API_URL}/static/images/${props.util}` : require("../../image/logo.png")}
-                alt="Logo"
+                alt="ktp"
                 objectFit="contain"
                 w="15ch"
               />
