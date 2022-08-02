@@ -7,42 +7,47 @@ import { Request } from "../page/Request";
 import { Transfer } from "../page/Transfer";
 import { Search } from "../page/Search";
 import { Verifikasi } from "../page/Verifikasi";
+import { PageNotFound } from "../page/NotFound";
 
 export const routes = [
   {
     path: '/',
-    component: Home,
+    component: Home
   },
   {
     path: '/login',
-    component: Login,
+    component: Login
   },
   {
     path: '/register',
-    component: Register,
+    component: Register
   },
   {
     path: '/request',
-    component: Request,
+    component: Request
   },
   {
     path: '/transfer',
-    component: Transfer,
+    component: Transfer
   },
   {
     path: '/profile',
-    component: Profile,
+    component: Profile
   },
   {
     path: '/history',
-    component: History,
+    component: History
   },
   {
     path: '/verifikasi',
-    component: Verifikasi,
+    component: Verifikasi
   },
   {
     path: '/search',
-    component: Search,
+    component: Search
   },
+  {
+    path: '*',
+    component: PageNotFound
+  }
 ]
