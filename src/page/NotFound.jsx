@@ -35,11 +35,11 @@ export const PageNotFound = () => {
           gap={3}
         >
           <Text color="darkCyan" as="b">Halaman Tidak Ditemukan</Text>
-          <Button bg="blue" color="white">
-            <Link to="/">
+          <Link to="/">
+            <Button bg="blue" color="white">
               Kembali Ke Halaman Utama
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </Container>
       </Flex>
     </PageAnimate>
