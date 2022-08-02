@@ -107,7 +107,7 @@ export const VerifikasiAkunCard = (props) => {
                 src={`https://drive.google.com/uc?export=view&id=${props.util}`}
                 alt="ktp"
                 objectFit="contain"
-                w="15ch"
+                maxW="15ch"
               />
             </ImageModal>
           </Flex>

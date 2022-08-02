@@ -25,9 +25,10 @@ export const AkunCard = (props) => {
               src={`https://drive.google.com/uc?export=view&id=${props.ktp}`}
               alt="ktp"
               objectFit="contain"
-              maxH="20ch"
+              maxH="25ch"
               alignSelf="center"
               cursor="pointer"
+              mb={3}
             />
           </ImageModal>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">

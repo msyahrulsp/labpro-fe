@@ -45,10 +45,10 @@ export const Profile = () => {
                   src={`https://drive.google.com/uc?export=view&id=${user.ktp}`}
                   alt="ktp"
                   objectFit="contain"
-                  maxW="15ch"
-                  maxH="15ch"
+                  maxH="25ch"
                   alignSelf="center"
                   cursor="pointer"
+                  mb={5}
                 />
               </ImageModal>
               {data.map((item, idx) => {

@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Frontend BNMO
+Sebuah frontend yang dibuat oleh seseorang yang sedang mengikuti seleksi Laboratorium Programming dengan niat untuk mengerjakan tugas dari awal diberikan, tetapi pada kenyataannya malah mengaret
 
-## Available Scripts
+## How to Install
+- Pastikan sudah ada [Node JS](https://nodejs.org/en/)
+- Pastikan sudah ada [Git](https://git-scm.com/) juga
+- Clone repo ini
+```
+git clone https://github.com/msyahrulsp/labpro-fe.git labpro-fe
+cd labpro-fe
+npm install
+```
 
-In the project directory, you can run:
+## How to Use
+- Ubah file .env.example menjadi .env dengan mengubah nilai REACT_APP_API_URL sesuai kebutuhan
+  - `http://localhost:5000` untuk connect ke backend di localhost (Cek [labpro-be](https://github.com/msyahrulsp/labpro-be) untuk cara setup)
+  - `https://labpro-be.herokuapp.com` untuk connect ke backend yang telah di deploy
+- Jalankan perintah `npm start`
+- Web akan otomatis terbuka di http://localhost:3000
 
-### `npm start`
+## Page List
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+| Page           | Access   | Description                                               |
+|----------------|----------|-----------------------------------------------------------|
+| /              | All      | Page Home                                                 |
+| /login         | All      | Page Login                                                |
+| /register      | All      | Page Register                                             |
+| /request       | Customer | Page untuk customer melakukan request                     |
+| /transfer      | Customer | Page untuk customer melakukan transfer                    |
+| /history       | Customer | Page untuk customer melihat history request atau transfer |
+| /profile       | Customer | Page untuk customer melihat data self                     |
+| /verifications | Admin    | Page untuk admin memverifikasi request dan akun customer  |
+| /search        | Admin    | Page untuk admin untuk melihat data semua user            |
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Dummy Data
 
-### `npm test`
+| Username   | Password   |
+|------------|------------|
+| admin      | admin      |
+| customer   | customer   |
+| 13520161   | 13520161   |
+| piyekabare | piyekabare |
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Documentation
+Untuk melihat dokumentasi API terkait, silahkan pergi ke link berikut
+> https://app.swaggerhub.com/apis-docs/MSSP892/lab-pro/1.0.0
 
-### `npm run build`
+## Tech Stack
+- NodeJS <sub>v16.14.2</sub>
+- React <sub>v18.2</sub>
+- Chakra UI <sub>v2.2.3</sub>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Website Link
+> https://labpro-fe.vercel.app/
