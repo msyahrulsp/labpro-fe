@@ -20,7 +20,7 @@ export const PageNotFound = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        h="100vh"
+        minH="100vh"
       >
         <Container
           display="flex"
