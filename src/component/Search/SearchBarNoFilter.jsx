@@ -27,10 +27,7 @@ export const SearchBar = ({ onChange, value, description, query }) => {
         <PopoverTrigger>
           <Button bg="blue" color="white" leftIcon={<QuestionIcon />}>Help</Button>
         </PopoverTrigger>
-        <PopoverContent
-          color="white"
-          bg="darkCyan"
-        >
+        <PopoverContent>
           <PopoverHeader pt={3} fontWeight="bold" border="0">
             Search Help
           </PopoverHeader>

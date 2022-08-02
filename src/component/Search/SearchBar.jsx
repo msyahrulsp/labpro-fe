@@ -42,11 +42,11 @@ export const SearchBar = ({
         <MenuButton textAlign="center" bg="blue" color="white" as={Button}>
           Filter
         </MenuButton>
-        <MenuList bg="darkCyan" color="white">
-          <MenuItem _hover={{ bg: "blue" }}>
+        <MenuList>
+          <MenuItem _hover={{ bg: "blue", color: "white" }} >
             <Checkbox colorScheme="linkedin" isChecked={trueVal} onChange={handleTrue}>{options[0]}</Checkbox>
           </MenuItem>
-          <MenuItem _hover={{ bg: "blue" }}>
+          <MenuItem _hover={{ bg: "blue", color: "white" }}>
             <Checkbox colorScheme="linkedin" isChecked={falseVal} onChange={handleFalse}>{options[1]}</Checkbox>
           </MenuItem>
         </MenuList>
@@ -55,10 +55,7 @@ export const SearchBar = ({
         <PopoverTrigger>
           <Button bg="blue" color="white" leftIcon={<QuestionIcon />}>Help</Button>
         </PopoverTrigger>
-        <PopoverContent
-          color="white"
-          bg="darkCyan"
-        >
+        <PopoverContent>
           <PopoverHeader pt={3} fontWeight="bold" border="0">
             Search Help
           </PopoverHeader>
