@@ -40,12 +40,9 @@ export const Profile = () => {
               borderRadius="lg"
               boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
             >
-              <ImageModal
-                src={user.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${user.ktp}` : require("../image/logo.png")}
-                align="center"
-              >
+              <ImageModal src={`https://drive.google.com/uc?export=view&id=${user.ktp}`} align="center">
                 <Image
-                  src={user.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${user.ktp}` : require("../image/logo.png")}
+                  src={`https://drive.google.com/uc?export=view&id=${user.ktp}`}
                   alt="ktp"
                   objectFit="contain"
                   maxW="15ch"

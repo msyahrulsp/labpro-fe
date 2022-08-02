@@ -32,6 +32,7 @@ export const Register = () => {
   const navigate = useNavigate();
   // safecase diganti type manual di folder input
   const validExt = ["image/jpg", "image/jpeg", "image/png"];
+  const maxSize = 5 * 1024 * 1024;
 
   const handleRegister = async () => {
     if (!registData.username && !registData.password && !registData.nama && !registData.ktp) {
@@ -77,7 +78,7 @@ export const Register = () => {
       });
       toast({
         title: "Success",
-        description: "Data berhasil diregister. Silahkan tunggu konfirmasi dari admin",
+        description: "Berhasil melakukan register. Silahkan tunggu konfirmasi dari admin",
         status: "success",
         position: "top",
         isClosable: true
@@ -186,7 +187,7 @@ export const Register = () => {
               variant="flushed"
               type="file"
               onChange={(e) => {
-                if (e.target.files[0].size < 2097152 && validExt.indexOf(e.target.files[0].type) !== -1) {
+                if (e.target.files[0].size < maxSize && validExt.indexOf(e.target.files[0].type) !== -1) {
                   setRegistData({ 
                     ...registData,
                     ktp: e.target.files[0]
@@ -194,7 +195,7 @@ export const Register = () => {
                 } else {
                   toast({
                     title: "Error",
-                    description: "File harus .jpg, .jpeg, atau .png dan size maksimal 2MB",
+                    description: "File harus .jpg, .jpeg, atau .png dan size maksimal 5MB",
                     status: "error",
                     position: "top",
                     isClosable: true

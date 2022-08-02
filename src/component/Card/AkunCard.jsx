@@ -20,16 +20,12 @@ export const AkunCard = (props) => {
         gap={5}
       >
         <Flex direction="column" w="100%" gap={2}>
-          <ImageModal
-            src={props.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${props.ktp}` : require("../../image/logo.png")}
-            align="center"
-          >
+          <ImageModal src={`https://drive.google.com/uc?export=view&id=${props.ktp}`} align="center">
             <Image
-              src={props.ktp ? `${process.env.REACT_APP_API_URL}/static/images/${props.ktp}` : require("../../image/logo.png")}
+              src={`https://drive.google.com/uc?export=view&id=${props.ktp}`}
               alt="ktp"
               objectFit="contain"
-              maxW="15ch"
-              maxH="15ch"
+              maxH="20ch"
               alignSelf="center"
               cursor="pointer"
             />

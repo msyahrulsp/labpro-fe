@@ -101,13 +101,10 @@ export const VerifikasiAkunCard = (props) => {
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue" alignSelf="center">KTP</Text>
-            <ImageModal
-              src={props.util ? `${process.env.REACT_APP_API_URL}/static/images/${props.util}`: require("../../image/logo.png")}
-              align="flex-end"
-            >
+            <ImageModal src={`https://drive.google.com/uc?export=view&id=${props.util}`} align="flex-end">
               <Image
                 cursor="pointer"
-                src={props.util ? `${process.env.REACT_APP_API_URL}/static/images/${props.util}` : require("../../image/logo.png")}
+                src={`https://drive.google.com/uc?export=view&id=${props.util}`}
                 alt="ktp"
                 objectFit="contain"
                 w="15ch"
