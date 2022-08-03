@@ -29,7 +29,7 @@ npm install
 | /transfer      | Customer | Page untuk customer melakukan transfer                    |
 | /history       | Customer | Page untuk customer melihat history request atau transfer |
 | /profile       | Customer | Page untuk customer melihat data self                     |
-| /verifications | Admin    | Page untuk admin memverifikasi request dan akun customer  |
+| /verifikasi    | Admin    | Page untuk admin memverifikasi request dan akun customer  |
 | /search        | Admin    | Page untuk admin untuk melihat data semua user            |
 
 ## Dummy Data
