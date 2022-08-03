@@ -1,10 +1,10 @@
-import { Container, Flex, Text, Image } from "@chakra-ui/react";
+import { Container, Flex, Text, Image, Button } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useRole } from "../hooks/useRole";
 import { useAuth } from "../hooks/useAuth";
 import { PageLayout } from "../layout/PageLayout";
 import { Loading } from "../component/Loading/Loading";
-import { ImageModal } from "../component/Modal/ImageModal";
+import { Link } from "react-router-dom";
 
 export const Profile = () => {
   const { isAuthorized } = useRole('customer');
@@ -28,7 +28,7 @@ export const Profile = () => {
   return (
     <PageLayout>
       {isAuthorized ? (
-        <Container maxW={{ base: "85%", lg: "70ch" }}>
+        <Container maxW="70ch">
           <Flex
               flexDirection="column"
               justifyContent="center"
@@ -40,25 +40,23 @@ export const Profile = () => {
               borderRadius="lg"
               boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
             >
-              <ImageModal src={`https://drive.google.com/uc?export=view&id=${user.ktp}`} align="center">
-                <Image
-                  src={`https://drive.google.com/uc?export=view&id=${user.ktp}`}
-                  alt="ktp"
-                  objectFit="contain"
-                  maxH="25ch"
-                  alignSelf="center"
-                  cursor="pointer"
-                  mb={5}
-                />
-              </ImageModal>
+              <Image
+                src={`https://drive.google.com/uc?export=view&id=${user.ktp}`}
+                alt="ktp"
+                objectFit="contain"
+                alignSelf="center"
+                cursor="pointer"
+                mb={5}
+              />
               {data.map((item, idx) => {
                 return (
                   <Container
-                    mb={2}
+                    mb={3}
                     key={idx}
                     borderRadius="lg"
                     px={3}
                     py={2}
+                    border="1px solid gray"
                     boxShadow="inset 3px 5px 10px lightgray"  
                   >
                     <Text color="darkCyan" as="b" textAlign="left">
@@ -70,6 +68,11 @@ export const Profile = () => {
                   </Container>
                 )
               })}
+              <Link to="/history">
+                <Button color="white" bg="blue">
+                  Lihat History
+                </Button>
+              </Link>
             </Flex>
           </Container>
       ) : <Loading />}

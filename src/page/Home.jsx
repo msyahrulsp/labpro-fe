@@ -27,6 +27,7 @@ export const Home = () => {
         flexWrap="wrap"
         mt={10}
         py={{ base: "6", lg: "0" }}
+        minH="70vh"
       >
         <Flex
           flexDirection="column"

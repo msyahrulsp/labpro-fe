@@ -55,7 +55,6 @@ export const VerifikasiRequestCard = (props) => {
       direction="column"
       bg="#FFFFFF"
       borderRadius="lg"
-      maxW="70ch"
       boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
       px={6}
       pt={5}

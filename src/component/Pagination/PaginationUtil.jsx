@@ -14,17 +14,17 @@ export const usePagination = ({
   const lastPage = Math.ceil(totalItem / itemsPerPage);
   const totalPage = lastPage === 0 ? 1 : lastPage;
   const prevPages =
-    currentPage >= 4
-      ? lastPage - currentPage > 3
-        ? [currentPage - 2, currentPage - 1]
-        : generateArray(lastPage - 6, currentPage)
+    currentPage >= 3
+      ? lastPage - currentPage > 2
+        ? [currentPage - 1]
+        : generateArray(lastPage - 4, currentPage)
       : generateArray(1, Math.max(currentPage, 1));
 
   const nextPages =
-    currentPage < 4
-      ? generateArray(currentPage + 1, Math.min(8, totalPage + 1))
-      : lastPage - currentPage > 3
-      ? [currentPage + 1, currentPage + 2]
+    currentPage < 3
+      ? generateArray(currentPage + 1, Math.min(6, totalPage + 1))
+      : lastPage - currentPage > 2
+      ? [currentPage + 1]
       : generateArray(currentPage + 1, lastPage + 1);
   const pageStart = (currentPage - 1) * itemsPerPage;
   const pageEnd = pageStart + itemsPerPage;

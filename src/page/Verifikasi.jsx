@@ -10,6 +10,7 @@ import { usePagination } from '../component/Pagination/PaginationUtil';
 import { Pagination } from '../component/Pagination/Pagination';
 import { getDataAPI } from '../util/api';
 import { Loading } from '../component/Loading/Loading';
+import { motion } from 'framer-motion';
 
 export const Verifikasi = () => {
   const [searchVal, setSearchVal] = useState('');
@@ -25,7 +26,7 @@ export const Verifikasi = () => {
     totalItem: data.length,
     page,
     items: data,
-    itemsPerPage: 5
+    itemsPerPage: 3
   })
   const searchDesc =
     "Kamu bisa gunakan search ini untuk mencari Nama, Username atau Tipe Request dari user"
@@ -132,7 +133,7 @@ export const Verifikasi = () => {
   return (
     <PageLayout>
       {isAuthorized && !isLoading ? (
-        <Container maxW={{ base: "85%", lg: "70ch" }} mt={8}>
+        <Container maxW="70ch" mt={8}>
           <SearchBar
             onChange={handleChange}
             value={searchVal}
@@ -145,19 +146,27 @@ export const Verifikasi = () => {
             query={searchQuery}
           />
           {pagination.pageItems.length > 0 && !isLoading ? (
-            pagination.pageItems.map((item) => {
+            pagination.pageItems.map((item, idx) => {
               return (
-                item.tipe === 'request' ? (
-                  <VerifikasiRequestCard
-                    key={item.tipe+item.id}
-                    {...item}
-                  />
-                ) : (
-                  <VerifikasiAkunCard
-                    key={item.tipe+item.id}
-                    {...item}
-                  />
-                )
+                <motion.div
+                  key={item.tipe+item.id}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  exit={{ scaleX: 0 }}
+                  transition={{ delay: 0.1 * idx }}
+                >
+                  {item.tipe === 'request' ? (
+                    <VerifikasiRequestCard
+                      key={item.tipe+item.id}
+                      {...item}
+                    />
+                  ) : (
+                    <VerifikasiAkunCard
+                      key={item.tipe+item.id}
+                      {...item}
+                    />
+                  )}
+                </motion.div>
               )
             })
           ) : (

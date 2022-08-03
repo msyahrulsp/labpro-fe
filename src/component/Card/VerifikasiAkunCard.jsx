@@ -4,7 +4,6 @@ import { ConfirmModal } from '../Modal/ConfirmModal';
 import { putDataAPI } from '../../util/api';
 import { useAuth } from '../../hooks/useAuth';
 import { useState } from 'react';
-import { ImageModal } from '../Modal/ImageModal';
 
 export const VerifikasiAkunCard = (props) => {
   const temp = parseDate(props.created).split('-');
@@ -56,13 +55,13 @@ export const VerifikasiAkunCard = (props) => {
       direction="column"
       bg="#FFFFFF"
       borderRadius="lg"
-      maxW="70ch"
       boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
       px={6}
       pt={5}
       pb={3}
       alignItems="center"
-      mt={4}flexWrap="wrap"
+      mt={4}
+      flexWrap="wrap"
     >
       <Container
         display="flex"
@@ -101,15 +100,13 @@ export const VerifikasiAkunCard = (props) => {
           </Flex>
           <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
             <Text as="b" color="blue" alignSelf="center">KTP</Text>
-            <ImageModal src={`https://drive.google.com/uc?export=view&id=${props.util}`} align="flex-end">
-              <Image
-                cursor="pointer"
-                src={`https://drive.google.com/uc?export=view&id=${props.util}`}
-                alt="ktp"
-                objectFit="contain"
-                maxW="15ch"
-              />
-            </ImageModal>
+            <Image
+              cursor="pointer"
+              src={`https://drive.google.com/uc?export=view&id=${props.util}`}
+              alt="ktp"
+              objectFit="contain"
+              maxW="15ch"
+            />
           </Flex>
         </Flex>
       </Container>

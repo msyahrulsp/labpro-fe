@@ -1,4 +1,4 @@
-import { Flex, Text, Container } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { parseDate } from '../../util/date';
 
 const colors = {
@@ -12,11 +12,10 @@ export const HistoryCard = (props) => {
   const tgl = temp[0];
   const waktu = temp[1] + ' WIB';
   return (
-    <Container
-      display="flex"
+    <Flex
       flexDirection={{ 
         base:"column", 
-        sm: props.tipe_transaksi === 'request' ? 'row' : 'row-reverse' 
+        sm: props.idx % 2 === 0 ? 'row' : 'row-reverse' 
       }}
       gap={5}
       bg="#FFFFFF"
@@ -26,7 +25,6 @@ export const HistoryCard = (props) => {
       boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
       alignItems="center"
       mt={4}
-      maxW="70ch"
     >
       <Text
         textAlign="center"
@@ -80,6 +78,6 @@ export const HistoryCard = (props) => {
           </Flex>
         ) : null}
       </Flex>
-    </Container>
+    </Flex>
   )
 }

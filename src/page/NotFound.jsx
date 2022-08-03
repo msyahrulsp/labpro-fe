@@ -21,6 +21,7 @@ export const PageNotFound = () => {
         justifyContent="center"
         alignItems="center"
         minH="100vh"
+        px={6}
       >
         <Container
           display="flex"
@@ -33,10 +34,11 @@ export const PageNotFound = () => {
           borderTopRadius="lg"
           boxShadow= "3px 4px 4px gray, inset 3px 5px 4px lightgray"
           gap={3}
+          flexWrap="wrap"
         >
           <Text color="darkCyan" as="b">Halaman Tidak Ditemukan</Text>
           <Link to="/">
-            <Button bg="blue" color="white">
+            <Button bg="blue" flexWrap="wrap" color="white">
               Kembali Ke Halaman Utama
             </Button>
           </Link>

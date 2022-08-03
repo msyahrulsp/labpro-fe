@@ -62,6 +62,16 @@ export const Transfer = () => {
   
   const handleTranfer = async () => {
     const parsedNominal = parseInt(val.nominal.replace(/[^0-9]/g, ''));
+    if (parsedNominal <= 0) {
+      toast({
+        title: 'Error',
+        description: 'Nominal harus lebih dari 0',
+        status: 'error',
+        position: 'top',
+        isClosable: true
+      });
+      return;
+    }
     try {
       setProcessing(true);
       const payload = {
@@ -103,7 +113,7 @@ export const Transfer = () => {
   return (
     <PageLayout>
       {isAuthorized ? (
-        <Container maxW={{ base: "85%", lg: "70ch" }}>
+        <Container maxW="70ch">
           <Flex
             flexDirection="column"
             justifyContent="center"

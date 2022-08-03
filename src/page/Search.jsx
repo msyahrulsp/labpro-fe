@@ -9,6 +9,7 @@ import { getDataAPI } from '../util/api';
 import { usePagination } from '../component/Pagination/PaginationUtil';
 import { Pagination } from '../component/Pagination/Pagination';
 import { useAuth } from '../hooks/useAuth';
+import { motion } from 'framer-motion';
 
 export const Search = () => {
   const [searchVal, setSearchVal] = useState('');
@@ -23,7 +24,7 @@ export const Search = () => {
     totalItem: data.length,
     page,
     items: data,
-    itemsPerPage: 5
+    itemsPerPage: 3
   });
   const searchDesc =
     "Kamu bisa gunakan search ini untuk mencari Nama, Username, atau No Rekening dari user"
@@ -80,7 +81,7 @@ export const Search = () => {
   return (
     <PageLayout>
       {isAuthorized && !loading ? (
-        <Container maxW={{ base: "85%", lg: "70ch" }} mt={8}>
+        <Container maxW="70ch" mt={8}>
           <SearchBar
             onChange={handleChange}
             value={searchVal}
@@ -88,9 +89,19 @@ export const Search = () => {
             query={searchQuery}
           />
           {pagination.pageItems.length > 0 && !loading ? (
-            pagination.pageItems.map((item) => {
+            pagination.pageItems.map((item, idx) => {
               return (
-                <AkunCard key={item.id_user} {...item} />
+                <>
+                  <motion.div
+                    key={item.id_user}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    exit={{ scaleX: 0 }}
+                    transition={{ delay: 0.1 * idx }}
+                  >
+                    <AkunCard key={item.id_user} {...item} />
+                  </motion.div>
+                </>
               )
             })
           ) : (

@@ -1,7 +1,7 @@
 export const parseDate = (date) => {
   const unix = new Date(date).getTime();
   const format = new Intl.DateTimeFormat('id-ID', {
-    dateStyle: 'medium',
+    dateStyle: 'long',
     timeStyle: 'short'
   }).format(unix);
 

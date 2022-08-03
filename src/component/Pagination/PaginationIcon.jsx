@@ -16,7 +16,7 @@ export const PaginationItemIcon = ({
       height="8"
       borderRadius={6}
       cursor="pointer"
-      bg="blue.600"
+      bg="blue"
       color="#FFFFFF"
       _hover={{
         bg: '#588BCC',

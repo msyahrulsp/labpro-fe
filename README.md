@@ -34,12 +34,12 @@ npm install
 
 ## Dummy Data
 
-| Username   | Password   |
-|------------|------------|
-| admin      | admin      |
-| customer   | customer   |
-| 13520161   | 13520161   |
-| piyekabare | piyekabare |
+| Username   | Password   | No Rekening |
+|------------|------------|-------------|
+| admin      | admin      | NULL        |
+| customer   | customer   | 1111234567  |
+| 13520161   | 13520161   | 1117654321  |
+| piyekabare | piyekabare | 1114285106  |
 
 ## API Documentation
 Untuk melihat dokumentasi API terkait, silahkan pergi ke link berikut

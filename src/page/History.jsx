@@ -9,6 +9,7 @@ import { Pagination } from '../component/Pagination/Pagination';
 import { usePagination } from '../component/Pagination/PaginationUtil';
 import { getDataAPI } from '../util/api';
 import { Loading } from '../component/Loading/Loading';
+import { motion } from 'framer-motion';
 
 export const History = () => {
   const [searchVal, setSearchVal] = useState('');
@@ -24,7 +25,7 @@ export const History = () => {
     totalItem: data.length,
     page,
     items: data,
-    itemsPerPage: 5
+    itemsPerPage: 3
   })
   const searchDesc =
     "Kamu bisa gunakan search ini untuk mencari Tipe Request, Rekening Tujuang dan Status history"
@@ -100,7 +101,7 @@ export const History = () => {
   return (
     <PageLayout>
       {isAuthorized && !isLoading ? (
-        <Container maxW={{ base: "85%", lg: "70ch" }} mt={8}>
+        <Container maxW="70ch" mt={8}>
           <SearchBar
             onChange={handleChange}
             value={searchVal}
@@ -113,12 +114,23 @@ export const History = () => {
             query={searchQuery}
           />
           {pagination.pageItems.length > 0 && !isLoading ? (
-            pagination.pageItems.map((item) => {
+            pagination.pageItems.map((item, idx) => {
               return (
-                <HistoryCard
-                  key={item.id_history}
-                  {...item}
-                />
+                <>
+                  <motion.div
+                    key={item.id_history}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    exit={{ scaleX: 0 }}
+                    transition={{ delay: 0.1 * idx }}
+                  >
+                    <HistoryCard
+                      key={item.id_history}
+                      idx={idx+((page-1)*3)}
+                      {...item}
+                    />
+                  </motion.div>
+                </>  
               )
             })
           ) : (
