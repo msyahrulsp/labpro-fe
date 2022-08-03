@@ -106,6 +106,7 @@ export const VerifikasiAkunCard = (props) => {
               alt="ktp"
               objectFit="contain"
               maxW="15ch"
+              borderRadius="lg"
             />
           </Flex>
         </Flex>

@@ -47,6 +47,7 @@ export const Profile = () => {
                 alignSelf="center"
                 cursor="pointer"
                 mb={5}
+                borderRadius="lg"
               />
               {data.map((item, idx) => {
                 return (
